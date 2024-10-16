@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/typography.css' %}" rel="stylesheet" />
+    <script defer src="{% static 'js/script.js'%} "></script>
+    <script defer src="{% static 'js/sign-up.js'%} "></script>
+  </head>
+  <body class="bg-login !bg-cover !bg-no-repeat !bg-center">
+    <!-- Side Panel for tablets and mobiles start -->
+    <div
+      class="bg-green-600 h-lvh w-1/2 fixed right-0 top-0 z-50 rounded-lg transform translate-x-full transition-transform duration-300 ease-in-out shadow-lg"
+      id="side-panel"
+    >
+      <div class="float-right text-6xl mx-3 cursor-pointer" id="closeButton">
+        <svg
+          class="h-10 w-10 text-white my-5"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </div>
+      <ul class="my-16 poppins text-white">
+        <a href="/"><li class="py-3 mx-5 text-lg font-semibold">Home</li></a>
+        <a href="{% url 'index' %}#services-id"
+          ><li class="py-3 mx-5 text-lg font-semibold">Services</li></a
+        >
+        <a href="{% url 'index' %}#about-us-id"
+          ><li class="py-3 mx-5 text-lg font-semibold">About Us</li></a
+        >
+        <a href="{% url 'index' %}#contacts-id"
+          ><li class="py-3 mx-5 text-lg font-semibold">Contact Us</li></a
+        >
+        <a href="{% url 'appointment' %}"
+          ><li class="py-3 mx-5 text-lg font-semibold">Appointments</li></a
+        >
+      </ul>
+    </div>
+    <!-- Side Panel for tablets and mobiles end -->
+
+    <!-- Navigation Bar Start -->
+    <nav
+      class="navbar-links bg-white flex w-full h-16 fixed z-40 shadow-md justify-between"
+    >
+      <div class="flex my-auto">
+        <div class="h-16 ml-5 flex text-nowrap">
+          <img
+            src="{% static 'images/new_logo.jpg' %}"
+            alt=""
+            class="h-full cursor-pointer mr-3"
+          />
+          <h1
+            class="text-4xl font-semibold mr-10 my-auto text-green-500 poppins animate-letters"
+          >
+            <span>A</span><span>N</span><span>D</span><span>I</span
+            ><span>T</span><span>O</span><span>&nbsp;</span><span>A</span
+            ><span>K</span><span>O</span>
+          </h1>
+        </div>
+      </div>
+      <div class="my-auto">
+        <ul
+          class="mylinks xs:max-lg:hidden poppins uppercase flex animate-fade-in text-nowrap"
+        >
+          <a
+            href="/"
+            class="my-auto mx-2 py-2 px-7 text-white rounded-full transition duration-150 ease-in bg-green-500"
+          >
+            <li>Home</li></a
+          >
+          <a
+            href="{% url 'index' %}#services-id"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+          >
+            <li>Services</li>
+          </a>
+          <a
+            href="{% url 'index' %}#about-us-id"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white text-nowrap"
+          >
+            <li>About Us</li>
+          </a>
+          <a
+            href="{% url 'index' %}#contacts-id"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+          >
+            <li>Contacts</li>
+          </a>
+          <a
+            href="{% url 'appointment' %}"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+          >
+            <li>Appointments</li>
+          </a>
+          <a href="/" class="h-16 ml-10 mr-5 my-auto cursor-pointer">
+            <img
+              src="{% static 'images/SLSU_Logo.png' %}"
+              alt=""
+              class="h-full"
+            />
+          </a>
+        </ul>
+      </div>
+      <div class="mx-5 lg:hidden my-auto" id="menu">
+        <svg
+          class="h-10 w-10 text-emerald-400"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </div>
+    </nav>
+    <!-- Navigation Bar End -->
+    <section class="min-h-screen flex items-center justify-center pt-20">
+      <div
+        class="login-wrapper p-10 mx-auto w-3/5 bg-white rounded-xl border border-black xs:max-sm:w-4/5"
+      >
+        <h1 class="text-center font-bold text-4xl mb-5">Sign Up</h1>
+        <form action="">
+          <div class="gap-4 text-black">
+            <!-- Other Form Fields -->
+            <div class="flex gap-4 xs:max-lg:flex-col xs:max-lg:gap-0">
+              <div class="w-full">
+                <label for="fname" class="">First Name</label>
+                <input
+                  required
+                  type="text"
+                  name="fname"
+                  id="fname"
+                  class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                />
+              </div>
+              <div class="w-full">
+                <label for="lname" class="">Last Name</label>
+                <input
+                  required
+                  type="text"
+                  name="lname"
+                  id="lname"
+                  class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                />
+              </div>
+            </div>
+            <div class="flex gap-4 xs:max-lg:flex-col xs:max-lg:gap-0">
+              <div class="w-full">
+                <label for="email" class="">Email (Institutional Email)</label>
+                <input
+                  required
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                />
+              </div>
+              <div class="w-full">
+                <label for="password" class="">Password</label>
+                <input
+                  required
+                  type="password"
+                  name="password"
+                  id="password"
+                  class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                />
+              </div>
+            </div>
+            <div class="flex gap-4 xs:max-lg:flex-col xs:max-lg:gap-0">
+              <div class="w-full">
+                <label for="contact-number" class="">Contact Number</label>
+                <input
+                  required
+                  type="text"
+                  name="contact-number"
+                  id="contact-number"
+                  pattern="[0-9]*"
+                  class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                />
+              </div>
+
+              <div class="w-full">
+                <label for="student-id" class="">Student ID Number</label>
+                <input
+                  required
+                  type="text"
+                  name="student-id"
+                  id="student-id"
+                  class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                />
+              </div>
+            </div>
+            <!-- Department and Course/Program Field -->
+            <div class="flex gap-4 xs:max-lg:flex-col xs:max-lg:gap-0">
+              <div class="w-full">
+                <label for="course-program"
+                  >Department and Course/Program</label
+                >
+                <input
+                  type="text"
+                  id="course-program"
+                  name="course-program"
+                  class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500 cursor-pointer"
+                  readonly
+                />
+              </div>
+              <div class="w-full">
+                <label for="year">Year of Study</label>
+                <select
+                  required
+                  name="year"
+                  id="year"
+                  class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                >
+                  <option value="1year">First Year</option>
+                  <option value="2year">Second Year</option>
+                  <option value="3year">Third Year</option>
+                  <option value="4year">Fourth Year</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Other Form Fields -->
+
+            <div class="col-span-2">
+              <label for="address">Address</label>
+              <input
+                required
+                type="text"
+                name="address"
+                id="address"
+                class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+              />
+            </div>
+          </div>
+
+          <div class="flex justify-center">
+            <button
+              type="submit"
+              class="mt-3 px-4 py-3 w-full rounded-full text-white bg-green-500 hover:bg-green-600"
+            >
+              Sign Up
+            </button>
+          </div>
+
+          <div class="flex justify-between text-sm">
+            <div class="mt-4">
+              <input
+                type="checkbox"
+                name="terms-conditions"
+                id="terms-conditions"
+                class="mr-2 focus:ring-white"
+                required
+              />
+              <label for="terms-conditions">
+                I agree to the
+                <label class="underline cursor-pointer text-blue-500 font-bold"
+                  >Terms and Conditions</label
+                >
+              </label>
+            </div>
+            <div>
+              <p class="mt-4 xs:max-lg:text-right">
+                Registered Already?
+                <a href="{% url 'login' %}" class="text-blue-500 font-bold"
+                  >Log In</a
+                >
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Modal Start For Terms and Conditions-->
+    <div
+      id="termsModal"
+      class="fixed inset-0 hidden items-center justify-center z-50"
+    >
+      <div class="bg-black bg-opacity-80 fixed inset-0"></div>
+      <div
+        class="bg-white rounded-lg px-10 py-5 z-10 mx-auto w-3/5 overflow-y-auto h-4/5 xs:max-lg:w-4/5"
+      >
+        <h2 class="text-2xl font-bold mb-4">Terms and Conditions</h2>
+        <p class="text-black mb-4 text-justify">
+          Welcome to ANDITO Ako, an online platform created to enhance mental
+          health issues for Southern Luzon State University (SLSU) students via
+          video counseling, peer-to-peer communication, and appointment
+          scheduling. Through accessing the “ANDITO Ako” platform (the
+          “Service”), you are agreeing to be bound by these terms and conditions
+          of use (the “Agreement”). If you do not agree with any of the
+          provisions of this agreement, please do not access the service.
+          <br />
+          <br />
+          <strong>I. The Service</strong><br />
+          <br />
+          <strong>Agreement:</strong> This Agreement is between you and the
+          developers of the “ANDITO Ako” platform. It applies to your use of the
+          Service, including access through authorized emails as a guidance
+          counselor, and student.<br />
+          <strong>Scope:</strong> The Service encompasses features such as
+          booking appointments, interacting with Guidance Counselors and SLSU
+          Peer facilitators, and staying informed of upcoming appointments
+          through reminders sent via the SLSU Email. <br /><br />
+          <strong>II. Using the Service</strong><br />
+          <br />
+          <strong>Eligibility:</strong> This platform is only available to
+          enrolled students of Southern Luzon State University.<br />
+          <strong>Account Registration:</strong> You must provide your full
+          name, email address, and other information needed for registration.
+          You agree to maintain the confidentiality of your account.<br />
+          <strong>Restrictions:</strong> Users must not engage in prohibited
+          conduct such as fraudulent use of the Service, and harassment.
+          Misconduct may lead to suspension.<br />
+          <strong>Termination:</strong> The developers may suspend or terminate
+          access to the Service for violation of this Agreement or any other
+          relevant policy. <br /><br />
+          <strong>III. Legal Obligations</strong><br /><br />
+          <strong>Privacy:</strong> ANDITO Ako values your privacy and handles
+          your data according to our Privacy Policy. By using the Service, you
+          consent to the collection and use of your data.<br />
+          <strong>Legal Compliance:</strong> Users must comply with applicable
+          laws and policies.<br />
+          <strong>Disclaimers:</strong> The Service is provided “as is” without
+          warranties of any kind. The developers are not liable for any damages
+          arising from the use of the Service.<br />
+          <strong>Limitation of Liability:</strong> The developers are not
+          responsible for direct, indirect, or incidental damages resulting from
+          the Service. <br /><br />
+          <strong>IV. Updates to the Agreement</strong><br />
+          <strong>Amendments:</strong> We may update this Agreement at any time.
+          Continued use of the Service signifies acceptance of the updated
+          terms.
+        </p>
+        <div class="flex justify-center">
+          <button
+            id="closeModal"
+            class="w-full py-2 bg-green-500 text-white rounded hover:bg-green-600"
+          >
+            I accept the Terms and Conditions
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Modal End For Terms and Conditions -->
+
+    <!-- Modal Start for Department and Programs -->
+    <section
+      class="modal hidden bg-gray-800 bg-opacity-50 fixed inset-0 flex items-center justify-center z-50"
+      id="courseModal"
+    >
+      <div class="bg-white p-8 rounded-lg w-11/12 max-w-xl xs:max-sm:w-4/5">
+        <h2 class="text-2xl font-bold mb-4">
+          Select Your Department and Course
+        </h2>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700"
+            >Department</label
+          >
+          <select
+            name="department"
+            id="department"
+            class="w-full px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+          >
+            <option value="" disabled selected>Select your Department</option>
+            <option value="College of Industrial Technology">
+              College of Industrial Technology
+            </option>
+            <option value="College of Engineering">
+              College of Engineering
+            </option>
+            <option value="College of Arts and Sciences">
+              College of Arts and Sciences
+            </option>
+            <option
+              value="College of Administration, Business, Hospitality and Accountancy"
+            >
+              College of Administration, Business, Hospitality and Accountancy
+            </option>
+            <option value="College of Teacher Education">
+              College of Teacher Education
+            </option>
+            <option value="College of Agriculture">
+              College of Agriculture
+            </option>
+            <option value="College of Allied Medicine">
+              College of Allied Medicine
+            </option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700"
+            >Course/Program</label
+          >
+          <select
+            name="course"
+            id="course"
+            class="w-full px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+          >
+            <!-- Options will be populated based on selected department -->
+          </select>
+        </div>
+        <div class="flex justify-end">
+          <button
+            class="py-2 px-4 bg-red-600 text-white cursor-pointer my-2 rounded hover:bg-red-700"
+            id="courseModalClose"
+          >
+            Cancel
+          </button>
+          <button
+            class="py-2 bg-green-600 text-white px-2 cursor-pointer my-2 rounded hover:bg-green-700 ml-4"
+            id="courseSelectBtn"
+          >
+            Select
+          </button>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

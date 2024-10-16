@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schedule</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/typography.css' %}" rel="stylesheet" />
+    <script defer src="{% static 'js/script.js'%} "></script>
+    <script defer src="{% static 'js/schedule.js'%} "></script>
+  </head>
+  <body class="hero-image bg-fixed !bg-cover !bg-center !bg-no-repeat">
+    <!-- Side Panel for tablets and mobiles start -->
+    <div
+      class="bg-green-600 h-lvh w-1/2 fixed right-0 top-0 z-50 rounded-lg transform translate-x-full transition-transform duration-300 ease-in-out shadow-lg"
+      id="side-panel"
+    >
+      <div class="float-right text-6xl mx-3 cursor-pointer" id="closeButton">
+        <svg
+          class="h-10 w-10 text-white my-5"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </div>
+      <ul class="my-16 poppins text-white">
+        <a href="{% url 'index' %}"
+          ><li class="py-3 mx-5 text-lg font-semibold">Home</li></a
+        >
+        <a href="{% url 'student_schedule' %}"
+          ><li class="py-3 mx-5 text-lg font-semibold">Schedule</li></a
+        >
+        <a href="{% url 'student_messages' %}"
+          ><li class="py-3 mx-5 text-lg font-semibold">Messages</li></a
+        >
+        <a href="{% url 'student_settings' %}"
+          ><li class="py-3 mx-5 text-lg font-semibold">Settings</li></a
+        >
+        <a href="{% url 'index' %}#services-id"
+          ><li class="py-3 mx-5 text-lg font-semibold">Services</li></a
+        >
+        <a href="{% url 'index' %}#about-us-id"
+          ><li class="py-3 mx-5 text-lg font-semibold">About Us</li></a
+        >
+        <a href="{% url 'index' %}l#contacts-id"
+          ><li class="py-3 mx-5 text-lg font-semibold">Contact Us</li></a
+        >
+        <a href="{% url 'student_appointment' %}"
+          ><li class="py-3 mx-5 text-lg font-semibold">Appointments</li></a
+        >
+      </ul>
+    </div>
+    <!-- Side Panel for tablets and mobiles end -->
+
+    <!-- Navigation Bar Start -->
+    <nav
+      class="navbar-links bg-white flex w-full h-16 fixed z-40 shadow-md justify-between"
+    >
+      <div class="flex my-auto">
+        <div class="h-16 ml-5 flex text-nowrap">
+          <img
+            src="/static/images/new_logo.jpg"
+            alt=""
+            class="h-full cursor-pointer mr-3"
+          />
+          <h1
+            class="text-4xl font-semibold mr-10 my-auto text-green-500 poppins animate-letters"
+          >
+            <span>A</span><span>N</span><span>D</span><span>I</span
+            ><span>T</span><span>O</span><span>&nbsp;</span><span>A</span
+            ><span>K</span><span>O</span>
+          </h1>
+        </div>
+      </div>
+      <div class="my-auto">
+        <ul
+          class="mylinks xs:max-lg:hidden poppins uppercase flex animate-fade-in text-nowrap"
+        >
+          <a
+            href="{% url 'index' %}"
+            class="my-auto mx-2 py-2 px-7 hover:text-white rounded-full transition duration-150 ease-in hover:bg-green-500"
+          >
+            <li>Home</li></a
+          >
+          <li
+            class="my-auto py-2 px-10 rounded-full box-border bg-green-500 text-white relative group whitespace-nowrap transition duration-150 ease-in"
+          >
+            <a href="{% url 'student_schedule' %}">Profile</a>
+            <ul
+              class="absolute left-0 mt-2 hidden group-hover:block w-full bg-white text-black shadow-lg rounded-xl"
+            >
+              <li
+                class="py-2 mt-2 rounded box-border hover:bg-green-500 hover:text-white transition duration-150 ease-in"
+              >
+                <a href="{% url 'student_schedule' %}" class="mx-3">Schedule</a>
+              </li>
+              <li
+                class="py-2 mt-2 rounded box-border hover:bg-green-500 hover:text-white transition duration-150 ease-in"
+              >
+                <a href="{% url 'student_messages' %}" class="mx-3">Messages</a>
+              </li>
+              <li
+                class="py-2 mt-2 rounded box-border hover:bg-green-500 hover:text-white transition duration-150 ease-in"
+              >
+                <a href="{% url 'student_settings' %}" class="mx-3">Settings</a>
+              </li>
+            </ul>
+          </li>
+          <a
+            href="{% url 'index' %}#services-id"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+          >
+            <li>Services</li>
+          </a>
+          <a
+            href="{% url 'index' %}#about-us-id"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white text-nowrap"
+          >
+            <li>About Us</li>
+          </a>
+          <a
+            href="{% url 'index' %}#contacts-id"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+          >
+            <li>Contacts</li>
+          </a>
+          <a
+            href="{% url 'student_appointment' %}"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+          >
+            <li>Appointments</li>
+          </a>
+          <a
+            href="{% url 'index' %}"
+            class="h-16 ml-10 mr-5 my-auto cursor-pointer"
+          >
+            <img src="/static/images/SLSU_Logo.png" alt="" class="h-full" />
+          </a>
+        </ul>
+      </div>
+      <div class="mx-5 lg:hidden my-auto" id="menu">
+        <svg
+          class="h-10 w-10 text-emerald-400"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </div>
+    </nav>
+    <!-- Navigation Bar End -->
+    <!-- Main Content Start -->
+    <section class="pt-16">
+      <div class="todays-date flex mx-10 mt-10">
+        <div class="my-auto flex">
+          <img
+            class="h-16 w-16 rounded-full border-green-500 border-2"
+            src="/static/images/pictures/ako.jpg"
+            alt="Admin Avatar"
+          />
+          <div class="my-auto mx-3">
+            <h1 class="poppins font-semibold">Rey Vincent E. Ebreo</h1>
+            <p class="text-gray-600">Student</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Greetings and Log Out -->
+      <div class="greetings-logout flex justify-between mx-10 my-5">
+        <div>
+          <h1 class="font-bold text-2xl xs:max-md:text-lg">
+            Hi! Rey Vincent Ebreo, Here Are You're Appointments
+          </h1>
+        </div>
+        <div class="my-auto">
+          <button
+            class="bg-red-500 hover:bg-red-600 text-white mx-3 px-14 py-2 rounded-md border-white border-2 text-nowrap xs:max-sm:px-10 xs:max-sm:mx-2"
+          >
+            Log Out
+          </button>
+        </div>
+      </div>
+
+      <!-- Date and Filter -->
+      <div
+        class="date-filter mx-10 flex justify-between border-black border-2 rounded-md py-3"
+      >
+        <div class="my-auto flex">
+          <p class="my-auto mx-3 font-semibold">Date:</p>
+          <div class="flex border-black border-2 mx-3 items-center">
+            <input
+              type="date"
+              class="calendar-input px-3 py-2 outline-none border-none"
+            />
+          </div>
+        </div>
+
+        <div
+          class="mx-2 rounded-md bg-green-500 text-white border-white border-2 hover:bg-green-600"
+          id="filter"
+        >
+          <div class="flex">
+            <button class="px-12 py-2 xs:max-sm:px-8">Filter</button>
+            <div class="my-auto">
+              <img
+                src="/static/images/filter-alt-solid-24.png"
+                alt=""
+                class="mr-3 w-6 h-6 sm:w-8 sm:h-8"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Appointment Container -->
+
+      <div class="appointment-wrapper p-10 m-10 rounded-md">
+        <div class="mb-10">
+          <p class="text-sm font-thin">Appointment Date: 05-20-2024</p>
+          <p class="text-2xl font-bold">1st Session</p>
+        </div>
+        <div class="text-sm font-thin">
+          <h3>Counselor 1</h3>
+          <h3>Scheduled Date: 05-27-2024</h3>
+          <h3>Time 12:00 PM</h3>
+        </div>
+        <div
+          class="bg-green-500 hover:bg-green-600 text-center py-3 mt-3 rounded-md transition duration-150 ease-in-out"
+        >
+          <button class="w-full text-white">Reschedule Appointment</button>
+        </div>
+      </div>
+    </section>
+    <!-- Main Content End -->
+
+    <!-- Pop Up Reschedule -->
+    <section
+      class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50 hidden"
+      id="reschedule-popup"
+    >
+      <div class="bg-white reschedule-pop-up text-center px-5 py-10 rounded-md">
+        <div class="py-3">
+          <h1 class="text-2xl font-bold">Are You Sure?</h1>
+          <h2>You want to reschedule your appointment?</h2>
+        </div>
+        <div class="yes-no mt-5">
+          <button
+            id="yes-btn-resched"
+            class="bg-red-500 hover:bg-red-600 px-10 py-3 mx-5 rounded-md text-white"
+          >
+            Yes
+          </button>
+          <button
+            id="no-btn-resched"
+            class="bg-green-500 hover:bg-green-600 px-10 py-3 mx-5 rounded-md text-white"
+          >
+            No
+          </button>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

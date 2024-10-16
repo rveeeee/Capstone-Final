@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appointment</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/typography.css' %}" rel="stylesheet" />
+    <script defer src="{% static 'js/script.js'%} "></script>
+    <script defer src="{% static 'js/appointment.js'%} "></script>
+  </head>
+  <body class="hero-image !bg-center !bg-cover bg-no-repeat">
+    <!-- Side Panel for tablets and mobiles start -->
+    <div
+      class="bg-green-600 h-lvh w-1/2 fixed right-0 top-0 z-50 rounded-lg transform translate-x-full transition-transform duration-300 ease-in-out shadow-lg"
+      id="side-panel"
+    >
+      <div class="float-right text-6xl mx-3 cursor-pointer" id="closeButton">
+        <svg
+          class="h-10 w-10 text-white my-5"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </div>
+      <ul class="my-16 poppins text-white">
+        <a href="/"><li class="py-3 mx-5 text-lg font-semibold">Home</li></a>
+        <a href="{% url 'index' %}#services-id"
+          ><li class="py-3 mx-5 text-lg font-semibold">Services</li></a
+        >
+        <a href="{% url 'index' %}#about-us-id"
+          ><li class="py-3 mx-5 text-lg font-semibold">About Us</li></a
+        >
+        <a href="{% url 'index' %}#contacts-id"
+          ><li class="py-3 mx-5 text-lg font-semibold">Contact Us</li></a
+        >
+        <a href="appointment"
+          ><li class="py-3 mx-5 text-lg font-semibold">Appointments</li></a
+        >
+      </ul>
+    </div>
+    <!-- Side Panel for tablets and mobiles end -->
+
+    <!-- Navigation Bar Start -->
+    <nav
+      class="navbar-links bg-white flex w-full h-16 fixed z-40 shadow-md justify-between"
+    >
+      <div class="flex my-auto">
+        <div class="h-16 ml-5 flex text-nowrap">
+          <img
+            src="{% static 'images/new_logo.jpg' %}"
+            alt=""
+            class="h-full cursor-pointer mr-3"
+          />
+          <h1
+            class="text-4xl font-semibold mr-10 my-auto text-green-500 poppins animate-letters"
+          >
+            <span>A</span><span>N</span><span>D</span><span>I</span
+            ><span>T</span><span>O</span><span>&nbsp;</span><span>A</span
+            ><span>K</span><span>O</span>
+          </h1>
+        </div>
+      </div>
+      <div class="my-auto">
+        <ul
+          class="mylinks xs:max-lg:hidden poppins uppercase flex animate-fade-in text-nowrap"
+        >
+          <a
+            href="/"
+            class="my-auto mx-2 py-2 px-7 text-white rounded-full transition duration-150 ease-in bg-green-500"
+          >
+            <li>Home</li></a
+          >
+          <a
+            href="{% url 'index' %}#services-id"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+          >
+            <li>Services</li>
+          </a>
+          <a
+            href="{% url 'index' %}#about-us-id"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white text-nowrap"
+          >
+            <li>About Us</li>
+          </a>
+          <a
+            href="{% url 'index' %}#contacts-id"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+          >
+            <li>Contacts</li>
+          </a>
+          <a
+            href="appointment"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+          >
+            <li>Appointments</li>
+          </a>
+          <a href="/" class="h-16 ml-10 mr-5 my-auto cursor-pointer">
+            <img
+              src="{% static 'images/SLSU_Logo.png' %}"
+              alt=""
+              class="h-full"
+            />
+          </a>
+        </ul>
+      </div>
+      <div class="mx-5 lg:hidden my-auto" id="menu">
+        <svg
+          class="h-10 w-10 text-emerald-400"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </div>
+    </nav>
+    <!-- Navigation Bar End -->
+    <!-- Calendar Section Start -->
+    <section class="pt-24">
+      <div class="flex">
+        <div
+          class="login-wrapper mx-10 my-5 py-10 rounded-md border-black border"
+        >
+          <div class="appointment-counselor-container flex mx-5 gap-4">
+            <div class="text-2xl font-semibold text-green-700">
+              <h1>APPOINTMENT CALENDAR</h1>
+              <p class="text-green-800 text-base">
+                Pick a date and time for an appointment.
+              </p>
+            </div>
+            <!-- Counselor toggle -->
+            <div class="relative grow select-none z-10">
+              <div
+                id="counselor-lists"
+                class="bg-green-700 ml-auto flex cursor-pointer items-center justify-between rounded px-4 py-1 text-white"
+              >
+                <div class="my-auto font-semibold text-base">
+                  <h1 id="selected-counselor nunito">Counselor 1</h1>
+                </div>
+                <div class="text-lg">
+                  <p>&#8744;</p>
+                </div>
+              </div>
+              <!-- Counselor toggle end -->
+              <div
+                id="dropdown-options"
+                class="absolute top-full left-0 w-full mt-2 bg-white rounded border-black border hidden nunito"
+              >
+                <div
+                  class="py-2 px-4 cursor-pointer hover:bg-green-400"
+                  data-value="counselor1"
+                >
+                  Counselor 1
+                </div>
+                <div
+                  class="py-2 px-4 cursor-pointer hover:bg-green-400"
+                  data-value="counselor2"
+                >
+                  Counselor 2
+                </div>
+                <div
+                  class="py-2 px-4 cursor-pointer hover:bg-green-400"
+                  data-value="counselor3"
+                >
+                  Counselor 3
+                </div>
+                <div
+                  class="py-2 px-4 cursor-pointer hover:bg-green-400"
+                  data-value="counselor4"
+                >
+                  Counselor 4
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="month-button-container flex justify-between mx-5 my-3">
+            <div class="my-auto text-green-800">
+              <h1
+                id="month-year"
+                class="font-semibold text-2xl uppercase nunito"
+              ></h1>
+            </div>
+            <div class="month-button-wrapper flex text-white text-2xl">
+              <div
+                class="bg-green-800 py-2 px-5 my-auto rounded cursor-pointer"
+                id="prev"
+              >
+                <h1 class="select-none">&lt;</h1>
+              </div>
+              <div
+                class="bg-green-800 ml-2 py-2 px-5 my-auto rounded cursor-pointer"
+                id="next"
+              >
+                <h1 class="select-none">&gt;</h1>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-7 bg-green-700 text-white nunito">
+            <div class="text-lg font-semibold py-3 px-7 text-center mx-auto">
+              Sun
+            </div>
+            <div class="text-lg font-semibold py-3 px-7 text-center mx-auto">
+              Mon
+            </div>
+            <div class="text-lg font-semibold py-3 px-7 text-center mx-auto">
+              Tue
+            </div>
+            <div class="text-lg font-semibold py-3 px-7 text-center mx-auto">
+              Wed
+            </div>
+            <div class="text-lg font-semibold py-3 px-7 text-center mx-auto">
+              Thu
+            </div>
+            <div class="text-lg font-semibold py-3 px-7 text-center mx-auto">
+              Fri
+            </div>
+            <div class="text-lg font-semibold py-3 px-7 text-center mx-auto">
+              Sat
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-7 font-semibold text-xl text-center cursor-pointer my-2"
+            id="days"
+          ></div>
+        </div>
+      </div>
+    </section>
+    <!-- Calendar Section End -->
+  </body>
+</html>

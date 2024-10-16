@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/typography.css' %}" rel="stylesheet" />
+    <script defer src="{% static 'js/admin.js'%} "></script>
+  </head>
+  <body class="bg-gray-100">
+    <div class="flex h-full">
+      <!-- Sidebar -->
+      <nav
+        class="fixed top-5 bottom-5 left-0 w-64 bg-white p-4 rounded-xl mx-4"
+      >
+        <div class="flex my-auto">
+          <div class="h-16 flex text-nowrap">
+            <img
+              src="/static/images/new_logo.jpg"
+              alt="New Logo"
+              class="h-full cursor-pointer mr-3 fade-in"
+            />
+            <h1
+              class="text-xl font-semibold mr-10 my-auto text-green-500 poppins animate-letters"
+            >
+              <span>A</span><span>N</span><span>D</span><span>I</span
+              ><span>T</span><span>O</span><span>&nbsp;</span><span>A</span
+              ><span>K</span><span>O</span>
+            </h1>
+          </div>
+        </div>
+        <p class="text-gray-600 mt-2 text-sm">Admin Operations</p>
+        <ul class="mt-2">
+          <li class="mb-2 w-full group">
+            <a
+              href="{% url 'admin' %}"
+              class="flex items-center p-2 font-semibold rounded-md bg-green-500 text-white group-hover:text-white"
+            >
+              <svg
+                class="h-8 w-8 mr-3 text-white group-hover:text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                />
+              </svg>
+              Dashboard
+            </a>
+          </li>
+          <li class="mb-2 w-full group">
+            <a
+              href="{% url 'admin_counselor' %}"
+              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
+            >
+              <svg
+                class="h-8 w-8 mr-3 text-emerald-500 group-hover:text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              Counselors
+            </a>
+          </li>
+          <li class="mb-2 w-full group">
+            <a
+              href="{% url 'admin_schedule' %}"
+              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
+            >
+              <svg
+                class="h-8 w-8 mr-3 text-emerald-500 group-hover:text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              Schedule
+            </a>
+          </li>
+          <li class="mb-2 w-full group">
+            <a
+              href="{% url 'admin_appointment' %}"
+              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
+            >
+              <svg
+                class="h-8 w-8 mr-3 text-emerald-500 group-hover:text-white"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <rect x="4" y="5" width="16" height="16" rx="2" />
+                <line x1="16" y1="3" x2="16" y2="7" />
+                <line x1="8" y1="3" x2="8" y2="7" />
+                <line x1="4" y1="11" x2="20" y2="11" />
+                <rect x="8" y="15" width="2" height="2" />
+              </svg>
+              Appointments
+            </a>
+          </li>
+          <li class="mb-2 w-full group">
+            <a
+              href="{% url 'admin_settings' %}"
+              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
+            >
+              <svg
+                class="h-8 w-8 text-emerald-500 mr-3 group-hover:text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="3" />
+                <path
+                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+                />
+              </svg>
+              Settings
+            </a>
+          </li>
+        </ul>
+        <p class="text-gray-600 mt-2 text-sm">Student Engagement</p>
+        <ul class="mt-2">
+          <li class="mb-2 w-full group">
+            <a
+              href="{% url 'admin_requests' %}"
+              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
+            >
+              <svg
+                class="h-8 w-8 mr-3 text-emerald-500 group-hover:text-white"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <circle cx="5" cy="18" r="2" />
+                <circle cx="19" cy="6" r="2" />
+                <path d="M19 8v5a5 5 0 0 1 -5 5h-3l3 -3m0 6l-3 -3" />
+                <path d="M5 16v-5a5 5 0 0 1 5 -5h3l-3 -3m0 6l3 -3" />
+              </svg>
+              Requests
+            </a>
+          </li>
+          <li class="mb-2 w-full group">
+            <a
+              href="{% url 'admin_students' %}"
+              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
+            >
+              <svg
+                class="h-8 w-8 mr-3 text-emerald-500 group-hover:text-white"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <circle cx="7" cy="5" r="2" />
+                <path
+                  d="M5 22v-5l-1-1v-4a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4l-1 1v5"
+                />
+                <circle cx="17" cy="5" r="2" />
+                <path
+                  d="M15 22v-4h-2l2 -6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1l2 6h-2v4"
+                />
+              </svg>
+              Students
+            </a>
+          </li>
+          <li class="mb-2 w-full group">
+            <a
+              href="{% url 'admin_feedbacks' %}"
+              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
+            >
+              <svg
+                class="h-8 w-8 mr-3 text-emerald-500 group-hover:text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
+                />
+              </svg>
+              User Feedback
+            </a>
+          </li>
+        </ul>
+        <div class="absolute bottom-3 left-0 w-full px-4">
+          <button
+            class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600"
+          >
+            Log Out
+          </button>
+        </div>
+      </nav>
+      <!-- Sidebar content here -->
+
+      <!-- Main content -->
+      <div class="flex-grow p-6 ml-72">
+        <div class="flex justify-between mb-3">
+          <div class="my-auto">
+            <h1 class="text-2xl font-bold">Admin Dashboard</h1>
+            <p id="admin-date" class="text-gray-600"></p>
+          </div>
+          <div class="flex mx-3">
+            <input
+              type="search"
+              name=""
+              id=""
+              placeholder="Search.."
+              class="my-3 pr-10 rounded-full"
+            />
+            <button class="rounded-full mx-3 my-auto bg-white p-2">
+              <!-- Search icon here -->
+              <svg
+                class="h-8 w-8 text-emerald-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </button>
+            <div class="my-auto flex">
+              <img
+                class="h-16 w-16 rounded-full border-green-500 border-2"
+                src="/static/images/pictures/ako.jpg"
+                alt="Admin Avatar"
+              />
+              <div class="my-auto mx-3">
+                <h1 class="poppins font-semibold">Rey Vincent Ebreo</h1>
+                <p class="text-gray-600">Administrator</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Calendar Section Start -->
+        <div class="flex">
+          <div
+            class="bg-white rounded-lg shadow-lg p-4 w-2/3 max-h-screen flex flex-col"
+          >
+            <h1 class="text-2xl font-bold mb-4">Calendar Appointments</h1>
+            <div
+              id="calendar-container"
+              class="calendar-container py-2 rounded-md border-black border-2 flex-grow"
+            >
+              <!-- Calendar content here -->
+              <div class="month-button-container flex justify-between m-3">
+                <div class="my-auto">
+                  <h1
+                    id="month-year"
+                    class="text-green-800 font-semibold text-2xl"
+                  ></h1>
+                  <p>Check the student's appointments</p>
+                </div>
+                <div class="month-button-wrapper flex text-2xl text-white">
+                  <div
+                    class="less-than-button py-2 px-5 my-auto rounded cursor-pointer bg-green-700"
+                    id="prev"
+                  >
+                    <h1 class="select-none">&lt;</h1>
+                  </div>
+                  <div
+                    class="greater-than-button ml-2 py-2 px-5 my-auto rounded cursor-pointer bg-green-700"
+                    id="next"
+                  >
+                    <h1 class="select-none">&gt;</h1>
+                  </div>
+                </div>
+              </div>
+              <div class="grid grid-cols-7 bg-green-700 text-white">
+                <div
+                  class="text-lg font-semibold py-3 px-3 text-center mx-auto"
+                >
+                  Sun
+                </div>
+                <div
+                  class="text-lg font-semibold py-3 px-3 text-center mx-auto"
+                >
+                  Mon
+                </div>
+                <div
+                  class="text-lg font-semibold py-3 px-3 text-center mx-auto"
+                >
+                  Tue
+                </div>
+                <div
+                  class="text-lg font-semibold py-3 px-3 text-center mx-auto"
+                >
+                  Wed
+                </div>
+                <div
+                  class="text-lg font-semibold py-3 px-3 text-center mx-auto"
+                >
+                  Thu
+                </div>
+                <div
+                  class="text-lg font-semibold py-3 px-3 text-center mx-auto"
+                >
+                  Fri
+                </div>
+                <div
+                  class="text-lg font-semibold py-3 px-3 text-center mx-auto"
+                >
+                  Sat
+                </div>
+              </div>
+              <!-- Month's Days Start -->
+              <div
+                class="grid grid-cols-7 font-semibold text-xl text-center cursor-pointer select-none mt-2"
+                id="days"
+              ></div>
+            </div>
+          </div>
+          <div
+            class="bg-white rounded-lg shadow-lg p-4 w-1/3 ml-3 overflow-y-auto max-h-screen flex flex-col"
+          >
+            <div class="font-semibold text-xl mb-5">
+              <h3>Counselors Schedule</h3>
+            </div>
+            <div
+              class="bg-green-600 border-black border rounded-md flex flex-col px-7 text-white flex-grow"
+            >
+              <!-- Schedule content here -->
+              <div class="flex justify-between my-3">
+                <h3>Counselor 1</h3>
+                <div class="text-right">
+                  <h3>05-27-2024</h3>
+                  <h3>3:00 PM</h3>
+                </div>
+              </div>
+              <div class="flex justify-between my-3">
+                <h3>Counselor 1</h3>
+                <div class="text-right">
+                  <h3>05-27-2024</h3>
+                  <h3>3:00 PM</h3>
+                </div>
+              </div>
+              <div class="flex justify-between my-3">
+                <h3>Counselor 1</h3>
+                <div class="text-right">
+                  <h3>05-27-2024</h3>
+                  <h3>3:00 PM</h3>
+                </div>
+              </div>
+              <div class="flex justify-between my-3">
+                <h3>Counselor 1</h3>
+                <div class="text-right">
+                  <h3>05-27-2024</h3>
+                  <h3>3:00 PM</h3>
+                </div>
+              </div>
+              <div class="flex justify-between my-3">
+                <h3>Counselor 1</h3>
+                <div class="text-right">
+                  <h3>05-27-2024</h3>
+                  <h3>3:00 PM</h3>
+                </div>
+              </div>
+              <div class="flex justify-between my-3">
+                <h3>Counselor 1</h3>
+                <div class="text-right">
+                  <h3>05-27-2024</h3>
+                  <h3>3:00 PM</h3>
+                </div>
+              </div>
+              <div class="flex justify-between my-3">
+                <h3>Counselor 1</h3>
+                <div class="text-right">
+                  <h3>05-27-2024</h3>
+                  <h3>3:00 PM</h3>
+                </div>
+              </div>
+              <div class="flex justify-between my-3">
+                <h3>Counselor 1</h3>
+                <div class="text-right">
+                  <h3>05-27-2024</h3>
+                  <h3>3:00 PM</h3>
+                </div>
+              </div>
+              <div class="flex justify-between my-3">
+                <h3>Counselor 1</h3>
+                <div class="text-right">
+                  <h3>05-27-2024</h3>
+                  <h3>3:00 PM</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Calendar Section End  -->
+        <!-- Student Requests Start -->
+        <section>
+          <div class="bg-white rounded-lg shadow-lg p-4 mt-5">
+            <div class="flex justify-between">
+              <div class="my-auto">
+                <h1 class="font-bold text-2xl">Registration Requests</h1>
+              </div>
+              <div>
+                <a href="{% url 'admin_requests' %}">
+                  <button class="bg-green-600 text-white py-2 px-16 rounded-md">
+                    View All
+                  </button>
+                </a>
+              </div>
+            </div>
+            <div
+              class="counselor-table border-black border max-h-96 overflow-y-auto my-3"
+            >
+              <table class="w-full border-collapse border">
+                <thead
+                  class="bg-green-700 sticky top-0 border border-black text-white"
+                >
+                  <tr>
+                    <th class="px-5 py-3 border border-black">Name</th>
+                    <th class="px-5 py-3 border border-black">Email Address</th>
+                    <th class="px-5 py-3 border border-black">
+                      Date of Registration
+                    </th>
+                    <th class="px-5 py-3 border border-black">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="text-center">
+                    <td class="px-5 py-3 border border-black">
+                      Rey Vincent Ebreo
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      November 5, 2024 - 3:00 PM
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      September 27, 2024
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      <button
+                        class="px-5 py-2 rounded bg-green-700 text-white mx-1 inline-block hover:bg-green-800"
+                      >
+                        Approve
+                      </button>
+                      <button
+                        class="px-5 py-2 rounded bg-red-700 text-white mx-1 inline-block hover:bg-red-800"
+                      >
+                        Decline
+                      </button>
+                    </td>
+                  </tr>
+                  <tr class="text-center">
+                    <td class="px-5 py-3 border border-black">
+                      Rey Vincent Ebreo
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      November 5, 2024 - 3:00 PM
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      September 27, 2024
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      <button
+                        class="px-5 py-2 rounded bg-green-700 text-white mx-1 inline-block hover:bg-green-800"
+                      >
+                        Approve
+                      </button>
+                      <button
+                        class="px-5 py-2 rounded bg-red-700 text-white mx-1 inline-block hover:bg-red-800"
+                      >
+                        Decline
+                      </button>
+                    </td>
+                  </tr>
+                  <tr class="text-center">
+                    <td class="px-5 py-3 border border-black">
+                      Rey Vincent Ebreo
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      November 5, 2024 - 3:00 PM
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      September 27, 2024
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      <button
+                        class="px-5 py-2 rounded bg-green-700 text-white mx-1 inline-block hover:bg-green-800"
+                      >
+                        Approve
+                      </button>
+                      <button
+                        class="px-5 py-2 rounded bg-red-700 text-white mx-1 inline-block hover:bg-red-800"
+                      >
+                        Decline
+                      </button>
+                    </td>
+                  </tr>
+                  <tr class="text-center">
+                    <td class="px-5 py-3 border border-black">
+                      Rey Vincent Ebreo
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      November 5, 2024 - 3:00 PM
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      September 27, 2024
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      <button
+                        class="px-5 py-2 rounded bg-green-700 text-white mx-1 inline-block hover:bg-green-800"
+                      >
+                        Approve
+                      </button>
+                      <button
+                        class="px-5 py-2 rounded bg-red-700 text-white mx-1 inline-block hover:bg-red-800"
+                      >
+                        Decline
+                      </button>
+                    </td>
+                  </tr>
+                  <tr class="text-center">
+                    <td class="px-5 py-3 border border-black">
+                      Rey Vincent Ebreo
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      November 5, 2024 - 3:00 PM
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      September 27, 2024
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      <button
+                        class="px-5 py-2 rounded bg-green-700 text-white mx-1 inline-block hover:bg-green-800"
+                      >
+                        Approve
+                      </button>
+                      <button
+                        class="px-5 py-2 rounded bg-red-700 text-white mx-1 inline-block hover:bg-red-800"
+                      >
+                        Decline
+                      </button>
+                    </td>
+                  </tr>
+                  <tr class="text-center">
+                    <td class="px-5 py-3 border border-black">
+                      Rey Vincent Ebreo
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      November 5, 2024 - 3:00 PM
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      September 27, 2024
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      <button
+                        class="px-5 py-2 rounded bg-green-700 text-white mx-1 inline-block hover:bg-green-800"
+                      >
+                        Approve
+                      </button>
+                      <button
+                        class="px-5 py-2 rounded bg-red-700 text-white mx-1 inline-block hover:bg-red-800"
+                      >
+                        Decline
+                      </button>
+                    </td>
+                  </tr>
+                  <tr class="text-center">
+                    <td class="px-5 py-3 border border-black">
+                      Rey Vincent Ebreo
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      November 5, 2024 - 3:00 PM
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      September 27, 2024
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      <button
+                        class="px-5 py-2 rounded bg-green-700 text-white mx-1 inline-block hover:bg-green-800"
+                      >
+                        Approve
+                      </button>
+                      <button
+                        class="px-5 py-2 rounded bg-red-700 text-white mx-1 inline-block hover:bg-red-800"
+                      >
+                        Decline
+                      </button>
+                    </td>
+                  </tr>
+                  <tr class="text-center">
+                    <td class="px-5 py-3 border border-black">
+                      Rey Vincent Ebreo
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      November 5, 2024 - 3:00 PM
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      September 27, 2024
+                    </td>
+                    <td class="px-5 py-3 border border-black">
+                      <button
+                        class="px-5 py-2 rounded bg-green-700 text-white mx-1 inline-block hover:bg-green-800"
+                      >
+                        Approve
+                      </button>
+                      <button
+                        class="px-5 py-2 rounded bg-red-700 text-white mx-1 inline-block hover:bg-red-800"
+                      >
+                        Decline
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        <!-- Student Requests End -->
+        <!-- Data Visualization Quarter Start -->
+        <section>
+          <div class="bg-white rounded-lg shadow-lg p-4 mt-5">
+            <div class="flex justify-between">
+              <div class="my-auto">
+                <h1 class="font-bold text-2xl">Quarterly Report</h1>
+              </div>
+              <div class="ml-10">
+                <select
+                  name="quarter-year"
+                  id="quarter-year"
+                  class="w-full border border-black rounded-md px-5 mr-10"
+                >
+                  <option value="" disabled selected hidden>
+                    Select a quarter of a year
+                  </option>
+                  <option value="Jan-Mar">January to March</option>
+                  <option value="Apr-Jun">April to June</option>
+                  <option value="Jul-Sep">July to September</option>
+                  <option value="Oct-Dec">October to December</option>
+                </select>
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <div class="bg-pink-500 h-20 w-1/2 mr-3 my-3"></div>
+              <div class="bg-pink-500 h-20 w-1/2 ml-3 my-3"></div>
+            </div>
+          </div>
+        </section>
+        <!-- Data Visualization Quarter End -->
+        <!-- Data Visualization Year Start -->
+        <section>
+          <div class="bg-white rounded-lg shadow-lg p-4 mt-5">
+            <div class="flex justify-between">
+              <div class="my-auto">
+                <h1 class="font-bold text-2xl">Yearly Report</h1>
+              </div>
+              <div class="ml-10">
+                <select
+                  name="yearly-report"
+                  id="yearly-report"
+                  class="w-full border border-black rounded-md px-5 mr-10"
+                >
+                  <option value="" disabled selected hidden>
+                    Select a year
+                  </option>
+                  <!-- Years will be added here dynamically -->
+                </select>
+              </div>
+            </div>
+            <div class="w-full bg-pink-500 h-20 my-3"></div>
+          </div>
+        </section>
+        <!-- Data Visualization Year End -->
+      </div>
+    </div>
+  </body>
+</html>

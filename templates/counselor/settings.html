@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/typography.css' %}" rel="stylesheet" />
+    <script defer src="{% static 'js/animations.js'%}"></script>
+    <script defer src="{% static 'js/counselor-settings.js'%} "></script>
+  </head>
+  <body class="bg-gray-100">
+    <div class="flex h-full">
+      <!-- Sidebar -->
+      <nav
+        class="fixed top-5 bottom-5 left-0 w-64 bg-white p-4 rounded-xl mx-4"
+      >
+        <div class="flex my-auto">
+          <div class="h-16 flex text-nowrap">
+            <img
+              src="/static/images/new_logo.jpg"
+              alt="New Logo"
+              class="h-full cursor-pointer mr-3 fade-in"
+            />
+            <h1
+              class="text-xl font-semibold mr-10 my-auto text-green-500 poppins animate-letters"
+            >
+              <span>A</span><span>N</span><span>D</span><span>I</span
+              ><span>T</span><span>O</span><span>&nbsp;</span><span>A</span
+              ><span>K</span><span>O</span>
+            </h1>
+          </div>
+        </div>
+        <p class="text-gray-600 mt-2 text-sm">Admin Operations</p>
+        <ul class="mt-2">
+          <li class="mb-2 w-full group">
+            <a
+              href="{% url 'counselor_dashboard' %}"
+              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white duration-150 ease-in-out"
+            >
+              <svg
+                class="h-8 w-8 mr-3 text-emerald-500 group-hover:text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                />
+              </svg>
+              Dashboard
+            </a>
+          </li>
+          <li class="mb-2 w-full group">
+            <a
+              href="{% url 'counselor_appointment' %}"
+              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white duration-150 ease-in-out"
+            >
+              <svg
+                class="h-8 w-8 mr-3 text-emerald-500 group-hover:text-white"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <rect x="4" y="5" width="16" height="16" rx="2" />
+                <line x1="16" y1="3" x2="16" y2="7" />
+                <line x1="8" y1="3" x2="8" y2="7" />
+                <line x1="4" y1="11" x2="20" y2="11" />
+                <rect x="8" y="15" width="2" height="2" />
+              </svg>
+              Appointments
+            </a>
+          </li>
+          <li class="mb-2 w-full group">
+            <a
+              href="{% url 'counselor_messages' %}"
+              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white duration-150 ease-in-out"
+            >
+              <svg
+                class="h-8 w-8 mr-3 text-emerald-500 group-hover:text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              Messages
+            </a>
+          </li>
+          <li class="mb-2 w-full group">
+            <a
+              href="{% url 'counselor_students' %}"
+              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white duration-150 ease-in-out"
+            >
+              <svg
+                class="h-8 w-8 mr-3 text-emerald-500 group-hover:text-white"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <circle cx="7" cy="5" r="2" />
+                <path
+                  d="M5 22v-5l-1-1v-4a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4l-1 1v5"
+                />
+                <circle cx="17" cy="5" r="2" />
+                <path
+                  d="M15 22v-4h-2l2 -6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1l2 6h-2v4"
+                />
+              </svg>
+              Students
+            </a>
+          </li>
+          <li class="mb-2 w-full group">
+            <a
+              href="{% url 'counselor_settings' %}"
+              class="flex items-center p-2 font-semibold bg-green-500 rounded-md text-white"
+            >
+              <svg
+                class="h-8 w-8 mr-3 text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="3" />
+                <path
+                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+                />
+              </svg>
+              Settings
+            </a>
+          </li>
+        </ul>
+
+        <div class="absolute bottom-3 left-0 w-full px-4">
+          <button
+            class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600"
+          >
+            Log Out
+          </button>
+        </div>
+      </nav>
+      <!-- Sidebar content here -->
+
+      <!-- Main content -->
+      <div class="flex-grow p-6 ml-72">
+        <div class="flex justify-between mb-3">
+          <div class="my-auto">
+            <h1 class="font-bold poppins text-2xl">Settings</h1>
+          </div>
+          <div class="date-logo flex mt-2">
+            <div class="text-right mr-5">
+              <p class="text-sm">Today's Date</p>
+              <h1 class="font-bold text-xl" id="current-date"></h1>
+            </div>
+            <div>
+              <img
+                src="/static/images/SLSU_Logo.png"
+                alt=""
+                class="w-auto h-16"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Settings Actions Start -->
+        <div
+          id="account-settings-button"
+          class="bg-white p-4 cursor-pointer flex rounded-md group hover:bg-green-500"
+        >
+          <div class="my-auto mx-5">
+            <svg
+              class="h-8 w-8 text-emerald-500 group-hover:text-white"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+              />
+            </svg>
+          </div>
+          <div class="my-3 group-hover:text-white">
+            <h1 class="font-bold text-2xl">Account Settings</h1>
+            <p class="capitalize">
+              Edit your account details & change password
+            </p>
+          </div>
+        </div>
+        <br />
+        <div
+          id="view-account-details-button"
+          class="bg-white p-4 cursor-pointer flex rounded-md group hover:bg-green-500"
+        >
+          <div class="my-auto mx-5">
+            <svg
+              class="h-8 w-8 text-emerald-500 group-hover:text-white"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </div>
+          <div class="my-3 group-hover:text-white">
+            <h1 class="font-bold text-2xl">View Account Details</h1>
+            <p class="capitalize">
+              View Personal Information About Your Account
+            </p>
+          </div>
+        </div>
+        <br />
+        <div
+          id="delete-button"
+          class="bg-white p-4 cursor-pointer flex rounded-md group hover:bg-green-500"
+        >
+          <div class="my-auto mx-5">
+            <svg
+              class="h-8 w-8 text-emerald-500 group-hover:text-white"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="3 6 5 6 21 6" />
+              <path
+                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+              />
+              <line x1="10" y1="11" x2="10" y2="17" />
+              <line x1="14" y1="11" x2="14" y2="17" />
+            </svg>
+          </div>
+          <div class="my-3 group-hover:text-white">
+            <h1 class="font-bold text-2xl text-red-500 group-hover:text-white">
+              Delete Account
+            </h1>
+            <p class="capitalize">Will Permanently Delete Your Account</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Edit Account Details Start -->
+    <div
+      id="edit-modal-background"
+      class="modal-background fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center z-50 hidden"
+    >
+      <div
+        id="edit-account-details-modal"
+        class="modal bg-white p-8 rounded-lg shadow-lg w-1/2 h-4/5 overflow-y-auto xs:max-lg:w-4/5"
+      >
+        <div class="flex justify-between items-center">
+          <h1
+            class="text-center text-4xl font-bold my-5 sm:max-lg:text-2xl xs:text-xl"
+          >
+            Edit User Account Details
+          </h1>
+          <h1 id="close-modal" class="text-4xl font-bold cursor-pointer">
+            &times;
+          </h1>
+        </div>
+        <form action="">
+          <div class="grid grid-cols-2 gap-4 w-full xs:max-sm:grid-cols-1">
+            <div>
+              <label for="name">Name:</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="w-full border border-black rounded-md p-2"
+              />
+            </div>
+            <div>
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="w-full border border-black rounded-md p-2"
+              />
+            </div>
+            <div>
+              <label for="college-department">College Department/Campus</label>
+              <select
+                name="college-department"
+                id="college-department"
+                class="w-full border border-black rounded-md p-2"
+              >
+                <option value="" disabled selected hidden>
+                  Select a department
+                </option>
+                <option value="CIT">College of Industrial Technology</option>
+                <option value="CTE">College of Teacher Education</option>
+                <option value="CAM">College of Allied Medicine</option>
+                <option value="CAS">College of Arts and Sciences</option>
+                <option value="CABHA">
+                  College of Administration, Business, Hospitality, and
+                  Accountancy
+                </option>
+                <option value="CEN">College of Engineering</option>
+                <option value="CAG">College of Agriculture</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="contact-number">Contact Number:</label>
+              <input
+                type="number"
+                name="contact-number"
+                id="contact-number"
+                class="w-full border border-black rounded-md p-2"
+              />
+            </div>
+            <div>
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                class="w-full border border-black rounded-md p-2"
+              />
+            </div>
+            <div>
+              <label for="confirm-password">Confirm Password:</label>
+              <input
+                type="password"
+                name="confirm-password"
+                id="confirm-password"
+                class="w-full border border-black rounded-md p-2"
+              />
+            </div>
+          </div>
+          <button
+            class="px-10 py-3 my-10 rounded bg-green-500 shadow-2xl text-white hover:bg-green-600 transition duration-150 ease-in-out"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- Edit Account Details End -->
+    <!-- View Account Details Start -->
+    <section>
+      <div
+        id="view-modal-background"
+        class="modal-background fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center z-50 hidden"
+      >
+        <div
+          id="view-account-details-modal"
+          class="modal bg-white p-8 rounded-lg shadow-lg w-1/2 h-4/5 overflow-y-auto xs:max-lg:w-4/5"
+        >
+          <div class="flex justify-between items-center mx-5">
+            <h1 class="text-center text-4xl font-bold my-5 xs:max-lg:text-2xl">
+              Account Details
+            </h1>
+            <h1 class="text-4xl font-bold cursor-pointer" id="close-view">
+              &times;
+            </h1>
+          </div>
+          <div class="px-5">
+            <div class="my-3 font-semibold text-2xl">
+              <h2>View Account Details</h2>
+            </div>
+            <div class="my-3">
+              <h2 class="font-semibold text-lg">Name:</h2>
+            </div>
+            <div class="my-3">
+              <h2 class="font-semibold text-lg">
+                College Department / Campus:
+              </h2>
+            </div>
+            <div class="my-3">
+              <h2 class="font-semibold text-lg">Address:</h2>
+            </div>
+            <div class="my-3">
+              <h2 class="font-semibold text-lg">Email:</h2>
+            </div>
+            <div class="my-3">
+              <h2 class="font-semibold text-lg">Contact Number:</h2>
+            </div>
+
+            <button
+              id="ok-button"
+              class="px-10 py-3 my-3 bg-green-500 hover:bg-green-600 text-white transition duration-150 ease-in-out rounded"
+            >
+              Ok
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- View Account Details End -->
+    <!-- Delete Account Modal Start -->
+    <section>
+      <div
+        id="delete-modal-background"
+        class="modal-background fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center z-50 hidden"
+      >
+        <div
+          id="delete-modal"
+          class="modal bg-white p-8 rounded-lg shadow-lg w-1/2 text-center xs:max-lg:w-4/5"
+        >
+          <div class="py-3">
+            <h1 class="text-2xl font-bold">Are You Sure?</h1>
+            <h2>You want to delete your account?</h2>
+          </div>
+          <div class="yes-no mt-5">
+            <button
+              id="yes-btn-delete"
+              class="yes-button bg-red-500 px-10 py-3 mx-5 rounded text-white transition duration-150 ease-in-out hover:bg-red-600"
+            >
+              Yes
+            </button>
+            <button
+              id="no-btn-delete"
+              class="no-button bg-green-500 px-10 py-3 mx-5 rounded text-white transition duration-150 ease-in-out hover:bg-green-600"
+            >
+              No
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Delete Account Modal End -->
+  </body>
+</html>
