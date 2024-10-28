@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from .models import Student
+from django.contrib.auth.forms import AuthenticationForm
 
 class StudentRegistrationForm(forms.ModelForm):
     username = forms.CharField(max_length=150)
@@ -39,3 +40,8 @@ class StudentRegistrationForm(forms.ModelForm):
             if commit:
                 student.save()
         return student
+
+        
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(max_length=150, required=True)
+    password = forms.CharField(widget=forms.PasswordInput, required=True)

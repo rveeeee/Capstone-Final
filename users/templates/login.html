@@ -145,15 +145,15 @@
             <form method="POST">
               {% csrf_token %}
               <!-- Email Input -->
-              <div class="email-container my-5">
+              <div class="username-container my-5">
                 <input
                   required
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Email"
+                  type="text"
+                  name="username"
+                  id="username"
+                  placeholder="Username"
                   class="border-green-500 w-full h-full py-3 px-5 rounded-full placeholder-gray-300 border focus:ring-1 focus:ring-green-500 focus:border-green-500"
-                  value="{{ form.email.value|default:'' }}"
+                  value="{{ form.username.value|default:'' }}"
                 />
               </div>
               <!-- Password Input -->

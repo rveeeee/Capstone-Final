@@ -127,4 +127,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN_URL = 'users:logIn'
+LOGIN_REDIRECT_URL = 'students:students_schedule'  # Replace 'home' with the name of the desired homepage view
+LOGOUT_REDIRECT_URL = 'users:logIn'
 

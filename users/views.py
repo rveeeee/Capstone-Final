@@ -4,6 +4,11 @@ from .forms import StudentRegistrationForm
 from .models import Student
 from django.contrib import messages
 import logging
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
+from django.views import View
+from .forms import LoginForm
 
 logger = logging.getLogger(__name__)
 
@@ -43,5 +48,33 @@ def signUp(request):
     return render(request, 'sign-up.html', {'form': form})
 
 
-def logIn (request):
-    return render(request, 'login.html')
+def logIn(request):
+    if request.method == 'POST':
+        form = LoginForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('students:student_schedule')  # Replace 'home' with the desired redirect page after login
+            else:
+                messages.error(request, "Invalid username or password.")
+        else:
+            messages.error(request, "Invalid username or password.")
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
+
+# Logout view
+@login_required
+def logOut(request):
+    logout(request)
+    return redirect('users:logIn')  # Redirect to the login page after logout
+
+# from django.contrib.auth.decorators import login_required
+
+# @login_required
+# def some_protected_view(request):
+#     # view code here
+# views for login people that need to be authenticated
