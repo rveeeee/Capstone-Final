@@ -10,6 +10,12 @@
     <link href="{% static 'css/typography.css' %}" rel="stylesheet" />
     <script defer src="{% static 'js/script.js'%} "></script>
     <script defer src="{% static 'js/schedule.js'%} "></script>
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate, max-age=0"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
   </head>
   <body class="hero-image bg-fixed !bg-cover !bg-center !bg-no-repeat">
     <!-- Side Panel for tablets and mobiles start -->
@@ -189,11 +195,13 @@
           </h1>
         </div>
         <div class="my-auto">
-          <button
-            class="bg-red-500 hover:bg-red-600 text-white mx-3 px-14 py-2 rounded-md border-white border-2 text-nowrap xs:max-sm:px-10 xs:max-sm:mx-2"
-          >
-            Log Out
-          </button>
+          <a href="{% url 'users:logOut' %}">
+            <button
+              class="bg-red-500 hover:bg-red-600 text-white mx-3 px-14 py-2 rounded-md border-white border-2 text-nowrap xs:max-sm:px-10 xs:max-sm:mx-2"
+            >
+              Log Out
+            </button>
+          </a>
         </div>
       </div>
 
