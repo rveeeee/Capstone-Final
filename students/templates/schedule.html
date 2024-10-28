@@ -181,7 +181,9 @@
             alt="Admin Avatar"
           />
           <div class="my-auto mx-3">
-            <h1 class="poppins font-semibold">Rey Vincent E. Ebreo</h1>
+            <h1 class="poppins font-semibold">
+              {{ user.first_name }} {{ user.last_name }}
+            </h1>
             <p class="text-gray-600">Student</p>
           </div>
         </div>
@@ -191,7 +193,8 @@
       <div class="greetings-logout flex justify-between mx-10 my-5">
         <div>
           <h1 class="font-bold text-2xl xs:max-md:text-lg">
-            Hi! Rey Vincent Ebreo, Here Are You're Appointments
+            Hi! {{ user.first_name }} {{ user.last_name }}, Here Are You're
+            Appointments
           </h1>
         </div>
         <div class="my-auto">
