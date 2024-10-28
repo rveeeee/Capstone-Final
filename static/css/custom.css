@@ -48,11 +48,11 @@ input[type="number"] {
   border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-.appointment-wrapper {
-  backdrop-filter: blur(5px);
+/* .appointment-wrapper {
+  background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border: 2px solid rgba(255, 255, 255, 0.2);
-}
+} */
 
 /* Admmin Customs Starts Here */
 .sidebar {
@@ -111,9 +111,9 @@ input[type="search"] {
   background-image: url(/static/images/profile-bg.png);
 }
 
-.date-filter {
+/* .date-filter {
   background: rgba(255, 255, 255, 0.61);
-}
+} */
 
 .reschedule-pop-up,
 .delete-pop-up {

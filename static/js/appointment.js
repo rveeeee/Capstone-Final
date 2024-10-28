@@ -41,8 +41,9 @@ let currentMonth = date.getMonth();
 let currentYear = date.getFullYear();
 
 function updateMonthYear() {
-  document.getElementById("month-year").innerHTML =
-    `${months[currentMonth]}, ${currentYear}`;
+  document.getElementById(
+    "month-year"
+  ).innerHTML = `${months[currentMonth]}, ${currentYear}`;
   displayDays(currentMonth, currentYear);
 }
 
@@ -77,7 +78,11 @@ function displayDays(month, year) {
     daysElement.innerHTML += `
       <div class="relative py-5 px-7 mx-5 mb-2 hover:bg-green-400 ${dayClass} ${todayClass}" data-day="${day}">
         ${day}
-        ${!isWeekend ? `<div class="book-label text-sm text-black font-bold rounded-md px-1 py-0.5 opacity-0 hover:opacity-100">Book</div>` : ""}
+        ${
+          !isWeekend
+            ? `<div class="book-label text-sm text-black font-bold rounded-md px-1 py-0.5 opacity-0 hover:opacity-100"></div>`
+            : ""
+        }
         ${todayLabel}
       </div>`;
   }

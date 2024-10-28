@@ -9,7 +9,7 @@
     <link href="{% static 'css/custom.css' %}" rel="stylesheet" />
     <link href="{% static 'css/typography.css' %}" rel="stylesheet" />
     <script defer src="{% static 'js/script.js'%} "></script>
-    <script defer src="{% static 'js/appointment.js'%} "></script>
+    <script defer src="{% static 'js/student-appointment.js'%} "></script>
   </head>
   <body class="hero-image bg-fixed !bg-cover !bg-no-repeat">
     <!-- Side Panel for tablets and mobiles start -->
@@ -38,13 +38,13 @@
         <a href="{% url 'index' %}"
           ><li class="py-3 mx-5 text-lg font-semibold">Home</li></a
         >
-        <a href="{% url 'student_schedule' %}"
+        <a href="{% url 'students:student_schedule' %}"
           ><li class="py-3 mx-5 text-lg font-semibold">Schedule</li></a
         >
-        <a href="{% url 'student_messages' %}"
+        <a href="{% url 'students:student_messages' %}"
           ><li class="py-3 mx-5 text-lg font-semibold">Messages</li></a
         >
-        <a href="{% url 'student_settings' %}"
+        <a href="{% url 'students:student_settings' %}"
           ><li class="py-3 mx-5 text-lg font-semibold">Settings</li></a
         >
         <a href="{% url 'index' %}#services-id"
@@ -56,7 +56,7 @@
         <a href="{% url 'index' %}l#contacts-id"
           ><li class="py-3 mx-5 text-lg font-semibold">Contact Us</li></a
         >
-        <a href="{% url 'student_appointment' %}"
+        <a href="{% url 'students:student_appointment' %}"
           ><li class="py-3 mx-5 text-lg font-semibold">Appointments</li></a
         >
       </ul>
@@ -96,24 +96,30 @@
           <li
             class="my-auto py-2 px-10 rounded-full box-border hover:bg-green-500 hover:text-white relative group whitespace-nowrap transition duration-150 ease-in"
           >
-            <a href="{% url 'student_schedule' %}">Profile</a>
+            <a href="{% url 'students:student_schedule' %}">Profile</a>
             <ul
               class="absolute left-0 mt-2 hidden group-hover:block w-full bg-white text-black shadow-lg rounded-xl"
             >
               <li
                 class="py-2 mt-2 rounded box-border hover:bg-green-500 hover:text-white transition duration-150 ease-in"
               >
-                <a href="{% url 'student_schedule' %}" class="mx-3">Schedule</a>
+                <a href="{% url 'students:student_schedule' %}" class="mx-3"
+                  >Schedule</a
+                >
               </li>
               <li
                 class="py-2 mt-2 rounded box-border hover:bg-green-500 hover:text-white transition duration-150 ease-in"
               >
-                <a href="{% url 'student_messages' %}" class="mx-3">Messages</a>
+                <a href="{% url 'students:student_messages' %}" class="mx-3"
+                  >Messages</a
+                >
               </li>
               <li
                 class="py-2 mt-2 rounded box-border hover:bg-green-500 hover:text-white transition duration-150 ease-in"
               >
-                <a href="{% url 'student_settings' %}" class="mx-3">Settings</a>
+                <a href="{% url 'students:student_settings' %}" class="mx-3"
+                  >Settings</a
+                >
               </li>
             </ul>
           </li>
@@ -136,7 +142,7 @@
             <li>Contacts</li>
           </a>
           <a
-            href="{% url 'student_appointment' %}"
+            href="{% url 'students:student_appointment' %}"
             class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in bg-green-500 text-white"
           >
             <li>Appointments</li>
@@ -183,7 +189,7 @@
             <div class="relative grow select-none z-10">
               <div
                 id="counselor-lists"
-                class="bg-green-700 ml-auto flex cursor-pointer items-center justify-between rounded bg-berde px-4 py-1 text-white"
+                class="bg-green-700 ml-auto flex cursor-pointer items-center justify-between rounded px-4 py-1 text-white"
               >
                 <div class="my-auto font-semibold text-base">
                   <h1 id="selected-counselor">Counselor 1</h1>
@@ -275,9 +281,7 @@
             id="days"
           ></div>
         </div>
-        <div
-          class="login-wrapper my-5 rounded-md flex flex-col space-y-7 w-2/5"
-        >
+        <div class="login-wrapper my-5 rounded-md flex flex-col space-y-7">
           <div class="font-semibold text-xl mt-5 mx-5">
             <h3>Time</h3>
           </div>

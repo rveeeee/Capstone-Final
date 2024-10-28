@@ -2,22 +2,9 @@ from django.shortcuts import render
 
 def index(request):
     return render(request, 'index.html')
-def logInPage(request):
-    return render(request, 'login.html')
-def signUpPage(request):
-    return render(request, 'sign-up.html')
 def appointmentPage(request):
     return render(request, 'appointment.html')
 
-#student interface
-def studentAppointment(request):
-    return render(request, 'student/appointment.html')
-def studentMessages(request):
-    return render(request, 'student/messages.html')
-def studentSchedule(request):
-    return render(request, 'student/schedule.html')
-def studentSettings(request):
-    return render(request, 'student/settings.html')
 
 #counselor interface
 def counselorAppointment(request):

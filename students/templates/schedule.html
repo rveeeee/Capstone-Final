@@ -38,13 +38,13 @@
         <a href="{% url 'index' %}"
           ><li class="py-3 mx-5 text-lg font-semibold">Home</li></a
         >
-        <a href="{% url 'student_schedule' %}"
+        <a href="{% url 'students:student_schedule' %}"
           ><li class="py-3 mx-5 text-lg font-semibold">Schedule</li></a
         >
-        <a href="{% url 'student_messages' %}"
+        <a href="{% url 'students:student_messages' %}"
           ><li class="py-3 mx-5 text-lg font-semibold">Messages</li></a
         >
-        <a href="{% url 'student_settings' %}"
+        <a href="{% url 'students:student_settings' %}"
           ><li class="py-3 mx-5 text-lg font-semibold">Settings</li></a
         >
         <a href="{% url 'index' %}#services-id"
@@ -56,7 +56,7 @@
         <a href="{% url 'index' %}l#contacts-id"
           ><li class="py-3 mx-5 text-lg font-semibold">Contact Us</li></a
         >
-        <a href="{% url 'student_appointment' %}"
+        <a href="{% url 'students:student_appointment' %}"
           ><li class="py-3 mx-5 text-lg font-semibold">Appointments</li></a
         >
       </ul>
@@ -96,24 +96,23 @@
           <li
             class="my-auto py-2 px-10 rounded-full box-border bg-green-500 text-white relative group whitespace-nowrap transition duration-150 ease-in"
           >
-            <a href="{% url 'student_schedule' %}">Profile</a>
+            <a href="{% url 'students:student_schedule' %}">Schedule</a>
             <ul
               class="absolute left-0 mt-2 hidden group-hover:block w-full bg-white text-black shadow-lg rounded-xl"
             >
               <li
                 class="py-2 mt-2 rounded box-border hover:bg-green-500 hover:text-white transition duration-150 ease-in"
               >
-                <a href="{% url 'student_schedule' %}" class="mx-3">Schedule</a>
+                <a href="{% url 'students:student_messages' %}" class="mx-3"
+                  >Messages</a
+                >
               </li>
               <li
                 class="py-2 mt-2 rounded box-border hover:bg-green-500 hover:text-white transition duration-150 ease-in"
               >
-                <a href="{% url 'student_messages' %}" class="mx-3">Messages</a>
-              </li>
-              <li
-                class="py-2 mt-2 rounded box-border hover:bg-green-500 hover:text-white transition duration-150 ease-in"
-              >
-                <a href="{% url 'student_settings' %}" class="mx-3">Settings</a>
+                <a href="{% url 'students:student_settings' %}" class="mx-3"
+                  >Settings</a
+                >
               </li>
             </ul>
           </li>
@@ -136,7 +135,7 @@
             <li>Contacts</li>
           </a>
           <a
-            href="{% url 'student_appointment' %}"
+            href="{% url 'students:student_appointment' %}"
             class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
           >
             <li>Appointments</li>
@@ -200,7 +199,7 @@
 
       <!-- Date and Filter -->
       <div
-        class="date-filter mx-10 flex justify-between border-black border-2 rounded-md py-3"
+        class="date-filter mx-10 flex justify-between border-black border-2 rounded-md py-3 bg-white"
       >
         <div class="my-auto flex">
           <p class="my-auto mx-3 font-semibold">Date:</p>
@@ -231,7 +230,9 @@
 
       <!-- Appointment Container -->
 
-      <div class="appointment-wrapper p-10 m-10 rounded-md">
+      <div
+        class="appointment-wrapper p-10 m-10 rounded-md bg-white border-black border-2"
+      >
         <div class="mb-10">
           <p class="text-sm font-thin">Appointment Date: 05-20-2024</p>
           <p class="text-2xl font-bold">1st Session</p>

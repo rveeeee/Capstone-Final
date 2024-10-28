@@ -137,32 +137,55 @@
         class="login-wrapper p-10 mx-auto w-3/5 bg-white rounded-xl border border-black xs:max-sm:w-4/5"
       >
         <h1 class="text-center font-bold text-4xl mb-5">Sign Up</h1>
-        <form action="">
+        <form method="post" action="{% url 'users:signUp' %}">
+          {% csrf_token %}
           <div class="gap-4 text-black">
             <!-- Other Form Fields -->
             <div class="flex gap-4 xs:max-lg:flex-col xs:max-lg:gap-0">
               <div class="w-full">
-                <label for="fname" class="">First Name</label>
+                <label for="first_name" class="">First Name</label>
                 <input
                   required
                   type="text"
-                  name="fname"
-                  id="fname"
+                  name="first_name"
+                  id="first_name"
                   class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                  value="{{ form.first_name.value|default:'' }}"
                 />
+                {% if form.first_name.errors %}
+                <div class="text-red-500">{{ form.first_name.errors }}</div>
+                {% endif %}
               </div>
               <div class="w-full">
-                <label for="lname" class="">Last Name</label>
+                <label for="last_name" class="">Last Name</label>
                 <input
                   required
                   type="text"
-                  name="lname"
-                  id="lname"
+                  name="last_name"
+                  id="last_name"
                   class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                  value="{{ form.last_name.value|default:'' }}"
                 />
+                {% if form.last_name.errors %}
+                <div class="text-red-500">{{ form.last_name.errors }}</div>
+                {% endif %}
               </div>
             </div>
             <div class="flex gap-4 xs:max-lg:flex-col xs:max-lg:gap-0">
+              <div class="w-full">
+                <label for="username" class="">Username</label>
+                <input
+                  required
+                  type="text"
+                  name="username"
+                  id="username"
+                  class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                  value="{{ form.username.value|default:'' }}"
+                />
+                {% if form.username.errors %}
+                <div class="text-red-500">{{ form.username.errors }}</div>
+                {% endif %}
+              </div>
               <div class="w-full">
                 <label for="email" class="">Email (Institutional Email)</label>
                 <input
@@ -171,8 +194,15 @@
                   name="email"
                   id="email"
                   class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                  value="{{ form.email.value|default:'' }}"
                 />
+                {% if form.email.errors %}
+                <div class="text-red-500">{{ form.email.errors }}</div>
+                {% endif %}
               </div>
+            </div>
+
+            <div class="flex gap-4 xs:max-lg:flex-col xs:max-lg:gap-0">
               <div class="w-full">
                 <label for="password" class="">Password</label>
                 <input
@@ -181,74 +211,136 @@
                   name="password"
                   id="password"
                   class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                  value="{{ form.password.value|default:'' }}"
                 />
+                {% if form.password.errors %}
+                <div class="text-red-500">{{ form.password.errors }}</div>
+                {% endif %}
+              </div>
+              <div class="w-full">
+                <label for="password_confirm" class="">Confirm Password</label>
+                <input
+                  required
+                  type="password"
+                  name="password_confirm"
+                  id="password_confirm"
+                  class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                  value="{{ form.password_confirm.value|default:'' }}"
+                />
+                {% if form.password_confirm.errors %}
+                <div class="text-red-500">
+                  {{ form.password_confirm.errors }}
+                </div>
+                {% endif %}
               </div>
             </div>
+
             <div class="flex gap-4 xs:max-lg:flex-col xs:max-lg:gap-0">
               <div class="w-full">
-                <label for="contact-number" class="">Contact Number</label>
-                <input
-                  required
-                  type="text"
-                  name="contact-number"
-                  id="contact-number"
-                  pattern="[0-9]*"
-                  class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
-                />
+                <label for="year_of_study">Year of Study</label>
+              <select
+                required
+                name="year_of_study"
+                id="year_of_study"
+                class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+              >
+                <option value="1st_year" {% if form.year_of_study.value == "1st_year" %}selected{% endif %}>First Year</option>
+                <option value="2nd_year" {% if form.year_of_study.value == "2nd_year" %}selected{% endif %}>Second Year</option>
+                <option value="3rd_year" {% if form.year_of_study.value == "3rd_year" %}selected{% endif %}>Third Year</option>
+                <option value="4th_year" {% if form.year_of_study.value == "4th_year" %}selected{% endif %}>Fourth Year</option>
+              </select>
+                
+                {% if form.year_of_study.errors %}
+                <div class="text-red-500">{{ form.year_of_study.errors }}</div>
+                {% endif %}
               </div>
-
               <div class="w-full">
-                <label for="student-id" class="">Student ID Number</label>
+                <label for="student_id" class="">Student ID Number</label>
                 <input
                   required
                   type="text"
-                  name="student-id"
-                  id="student-id"
+                  name="student_id"
+                  id="student_id"
                   class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                  value="{{ form.student_id.value|default:'' }}"
                 />
+                {% if form.student_id.errors %}
+                <div class="text-red-500">{{ form.student_id.errors }}</div>
+                {% endif %}
               </div>
             </div>
             <!-- Department and Course/Program Field -->
             <div class="flex gap-4 xs:max-lg:flex-col xs:max-lg:gap-0">
               <div class="w-full">
-                <label for="course-program"
-                  >Department and Course/Program</label
-                >
-                <input
-                  type="text"
-                  id="course-program"
-                  name="course-program"
-                  class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500 cursor-pointer"
-                  readonly
-                />
-              </div>
-              <div class="w-full">
-                <label for="year">Year of Study</label>
+                <label for="department">Department</label>
                 <select
                   required
-                  name="year"
-                  id="year"
+                  name="department"
+                  id="department"
                   class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                  value="{{ form.department.value|default:'' }}"
                 >
-                  <option value="1year">First Year</option>
-                  <option value="2year">Second Year</option>
-                  <option value="3year">Third Year</option>
-                  <option value="4year">Fourth Year</option>
+                  <option value="">Select Department</option>
+                  <option value="cit">College of Industrial Technology</option>
+                  <option value="cen">College of Engineering</option>
+                  <option value="cas">College of Arts and Sciences</option>
+                  <option value="cabha">
+                    College of Administration, Business, Hospitality and
+                    Accountancy
+                  </option>
+                  <option value="cte">College of Teacher Education</option>
+                  <option value="cag">College of Agriculture</option>
+                  <option value="cam">College of Allied Medicine</option>
                 </select>
+                {% if form.department.errors %}
+                <div class="text-red-500">{{ form.department.errors }}</div>
+                {% endif %}
+              </div>
+              <div class="w-full">
+                <label for="program" class="">Program</label>
+                <select
+                  required
+                  name="program"
+                  id="program"
+                  class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                  value="{{ form.program.value|default:'' }}"
+                ></select>
+                {% if form.program.errors %}
+                <div class="text-red-500">{{ form.program.errors }}</div>
+                {% endif %}
               </div>
             </div>
+            <div class="flex gap-4 xs:max-lg:flex-col xs:max-lg:gap-0">
+              <div class="w-full">
+                <label for="contact_number" class="">Contact Number</label>
 
-            <!-- Other Form Fields -->
-
-            <div class="col-span-2">
-              <label for="address">Address</label>
-              <input
-                required
-                type="text"
-                name="address"
-                id="address"
-                class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
-              />
+                <input
+                  required
+                  type="number"
+                  name="contact_number"
+                  id="contact_number"
+                  pattern="[0-9]*"
+                  class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                  value="{{ form.contact_number.value|default:'' }}"
+                />
+                {% if form.contact_number.errors %}
+                <div class="text-red-500">{{ form.contact_number.errors }}</div>
+                {% endif %}
+              </div>
+              <div class="w-full">
+                <label for="address">Address</label>
+                <input
+                  required
+                  type="text"
+                  name="address"
+                  id="address"
+                  class="w-full rounded border-black bg-transparent border focus:ring-1 focus:ring-green-500 focus:border-green-500"
+                  value="{{ form.address.value|default:'' }}"
+                />
+                {% if form.address.errors %}
+                <div class="text-red-500">{{ form.address.errors }}</div>
+                {% endif %}
+              </div>
             </div>
           </div>
 
@@ -280,7 +372,9 @@
             <div>
               <p class="mt-4 xs:max-lg:text-right">
                 Registered Already?
-                <a href="{% url 'login' %}" class="text-blue-500 font-bold"
+                <a
+                  href="{% url 'users:logIn' %}"
+                  class="text-blue-500 font-bold"
                   >Log In</a
                 >
               </p>
@@ -361,78 +455,5 @@
       </div>
     </div>
     <!-- Modal End For Terms and Conditions -->
-
-    <!-- Modal Start for Department and Programs -->
-    <section
-      class="modal hidden bg-gray-800 bg-opacity-50 fixed inset-0 flex items-center justify-center z-50"
-      id="courseModal"
-    >
-      <div class="bg-white p-8 rounded-lg w-11/12 max-w-xl xs:max-sm:w-4/5">
-        <h2 class="text-2xl font-bold mb-4">
-          Select Your Department and Course
-        </h2>
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700"
-            >Department</label
-          >
-          <select
-            name="department"
-            id="department"
-            class="w-full px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-          >
-            <option value="" disabled selected>Select your Department</option>
-            <option value="College of Industrial Technology">
-              College of Industrial Technology
-            </option>
-            <option value="College of Engineering">
-              College of Engineering
-            </option>
-            <option value="College of Arts and Sciences">
-              College of Arts and Sciences
-            </option>
-            <option
-              value="College of Administration, Business, Hospitality and Accountancy"
-            >
-              College of Administration, Business, Hospitality and Accountancy
-            </option>
-            <option value="College of Teacher Education">
-              College of Teacher Education
-            </option>
-            <option value="College of Agriculture">
-              College of Agriculture
-            </option>
-            <option value="College of Allied Medicine">
-              College of Allied Medicine
-            </option>
-          </select>
-        </div>
-        <div class="mb-4">
-          <label class="block text-sm font-medium text-gray-700"
-            >Course/Program</label
-          >
-          <select
-            name="course"
-            id="course"
-            class="w-full px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-          >
-            <!-- Options will be populated based on selected department -->
-          </select>
-        </div>
-        <div class="flex justify-end">
-          <button
-            class="py-2 px-4 bg-red-600 text-white cursor-pointer my-2 rounded hover:bg-red-700"
-            id="courseModalClose"
-          >
-            Cancel
-          </button>
-          <button
-            class="py-2 bg-green-600 text-white px-2 cursor-pointer my-2 rounded hover:bg-green-700 ml-4"
-            id="courseSelectBtn"
-          >
-            Select
-          </button>
-        </div>
-      </div>
-    </section>
   </body>
 </html>

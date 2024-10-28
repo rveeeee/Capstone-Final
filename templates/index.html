@@ -153,14 +153,14 @@
             vitality and purpose.
           </p>
           <div class="xs:max-sm:flex">
-            <a href="login">
+            <a href="{% url 'users:logIn' %}">
               <button
                 class="xs:max-sm:px-10 xs:max-sm:mr-2 px-14 py-2 bg-green-500 border-2 text-white border-green-500 rounded-full hover:bg-green-600 hover:text-white transform duration-200 ease-in-out animate-bounce-in"
               >
                 Log in
               </button></a
             >
-            <a href="sign-up">
+            <a href="{% url 'users:signUp' %}">
               <button
                 class="xs:max-sm:px-10 px-14 py-2 bg-transparent border-2 text-pink-500 border-pink-500 rounded-full hover:bg-pink-600 hover:text-white transform duration-200 ease-in-out animate-bounce-in"
               >
@@ -959,7 +959,7 @@
     </section>
     <!-- CTA End -->
     <!-- Footer Start -->
-    <footer class="bg-footer-color">
+    <footer class="bg-green-700">
       <div
         class="footer-container flex text-white mx-10 mt-10 justify-between xs:max-lg:flex-col"
       >
