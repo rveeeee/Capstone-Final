@@ -20,24 +20,13 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('', views.index, name='index'),
     path('appointment/', views.appointmentPage, name='appointment'),
+    
     path('', include('users.urls')),
-    path('students/', include('students.urls')),
-  
-    #counselor interface
-    path('counselor/appointment', views.counselorAppointment, name='counselor_appointment'),
-    path('counselor/dashboard', views.counselorDashboard, name='counselor_dashboard'),
-    path('counselor/messages', views.counselorMessages, name='counselor_messages'),
-    path('counselor/settings', views.counselorSettings, name='counselor_settings'),
-    path('counselor/students', views.counselorStudents, name='counselor_students'),
-    #admin interface
-    path('admin/admin', views.admin, name='admin'),
-    path('admin/appointment', views.adminAppointment, name='admin_appointment'),
-    path('admin/counselor', views.adminCounselor, name='admin_counselor'),
-    path('admin/feedback', views.adminFeedbacks, name='admin_feedback'),
-    path('admin/requests', views.adminRequests, name='admin_requests'),
-    path('admin/schedule', views.adminSchedule, name='admin_schedule'),
-    path('admin/settings', views.adminSettings, name='admin_settings'),
-    path('admin/students', views.adminStudents, name='admin_students'),
+    path('', include('students.urls')),
+    path('', include('counselor.urls')),
+    path('', include('admin_counselor.urls')),
+
 ]

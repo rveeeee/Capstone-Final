@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Schedule Manager</title>
+    <title>Appointment Manager</title>
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
     <link href="{% static 'css/custom.css' %}" rel="stylesheet" />
     <link href="{% static 'css/typography.css' %}" rel="stylesheet" />
@@ -36,8 +36,8 @@
         <ul class="mt-2">
           <li class="mb-2 w-full group">
             <a
-              href="{% url 'admin' %}"
-              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
+              href="{% url 'admin_counselor:admin_counselor' %}"
+              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white"
             >
               <svg
                 class="h-8 w-8 mr-3 text-emerald-500 group-hover:text-white"
@@ -57,7 +57,7 @@
           </li>
           <li class="mb-2 w-full group">
             <a
-              href="{% url 'admin_counselor' %}"
+              href="{% url 'admin_counselor:admin_counselors' %}"
               class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
             >
               <svg
@@ -79,11 +79,11 @@
           </li>
           <li class="mb-2 w-full group">
             <a
-              href="{% url 'admin_schedule' %}"
-              class="flex items-center p-2 font-semibold bg-green-500 rounded-md text-white transition duration-150 ease-in-out"
+              href="{% url 'admin_counselor:admin_schedule' %}"
+              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
             >
               <svg
-                class="h-8 w-8 mr-3 text-white"
+                class="h-8 w-8 mr-3 text-emerald-500 group-hover:text-white"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -99,11 +99,11 @@
           </li>
           <li class="mb-2 w-full group">
             <a
-              href="{% url 'admin_appointment' %}"
-              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
+              href="{% url 'admin_counselor:admin_appointment' %}"
+              class="flex items-center p-2 font-semibold bg-green-500 rounded-md text-white transition duration-150 ease-in-out"
             >
               <svg
-                class="h-8 w-8 mr-3 text-emerald-500 group-hover:text-white"
+                class="h-8 w-8 mr-3 text-white"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -125,7 +125,7 @@
           </li>
           <li class="mb-2 w-full group">
             <a
-              href="{% url 'admin_settings' %}"
+              href="{% url 'admin_counselor:admin_settings' %}"
               class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
             >
               <svg
@@ -150,7 +150,7 @@
         <ul class="mt-2">
           <li class="mb-2 w-full group">
             <a
-              href="{% url 'admin_requests' %}"
+              href="{% url 'admin_counselor:admin_requests' %}"
               class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
             >
               <svg
@@ -175,7 +175,7 @@
           </li>
           <li class="mb-2 w-full group">
             <a
-              href="{% url 'admin_students' %}"
+              href="{% url 'admin_counselor:admin_students' %}"
               class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
             >
               <svg
@@ -204,7 +204,7 @@
           </li>
           <li class="mb-2 w-full group">
             <a
-              href="{% url 'admin_feedbacks' %}"
+              href="{% url 'admin_counselor:admin_feedbacks' %}"
               class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
             >
               <svg
@@ -237,7 +237,7 @@
       <div class="flex-grow p-4 ml-72 mr-5">
         <div class="flex justify-between">
           <div class="my-auto">
-            <h1 class="font-bold poppins text-2xl">Schedule Manager</h1>
+            <h1 class="font-bold poppins text-2xl">Appointment Manager</h1>
           </div>
           <div class="date-logo flex mt-2">
             <div class="text-right mr-5">
@@ -284,96 +284,9 @@
               </button>
             </div>
           </div>
-
           <!-- Date, Counselor, Filter End -->
-          <!-- Student Table Start -->
-
-          <div
-            class="counselor-table border-black border max-h-96 overflow-y-auto mt-3 rounded-sm"
-          >
-            <table class="w-full border-collapse border">
-              <thead
-                class="bg-green-700 sticky top-0 border border-black text-white"
-              >
-                <tr>
-                  <th class="px-5 py-3 border border-black">Counselor</th>
-                  <th class="px-5 py-3 border border-black">Scheduled Date</th>
-                  <th class="px-5 py-3 border border-black">Time</th>
-                  <th class="px-5 py-3 border border-black">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="text-center">
-                  <td class="px-5 py-3 border border-black">
-                    Rey Vincent Ebreo
-                  </td>
-                  <td class="px-5 py-3 border border-black">
-                    November 5, 2024
-                  </td>
-                  <td class="px-5 py-3 border border-black">3:00 PM</td>
-                  <td class="px-5 py-3 border border-black">
-                    <button
-                      id="view-button"
-                      class="px-5 py-2 rounded bg-green-500 text-white mx-1 inline-block hover:bg-green-600"
-                    >
-                      View
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </div>
       </div>
     </div>
-    <!-- Add New Counselor Start -->
-    <!-- View Account Details Start -->
-    <section>
-      <div
-        id="view-modal-background"
-        class="modal-background fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center z-50 hidden"
-      >
-        <div
-          id="view-account-details-modal"
-          class="modal bg-white p-8 rounded-lg shadow-lg w-1/2 h-4/5 overflow-y-auto xs:max-lg:w-4/5"
-        >
-          <div class="flex justify-between items-center mx-5">
-            <h1 class="text-center text-4xl font-bold my-5 xs:max-lg:text-2xl">
-              View Details
-            </h1>
-            <h1 class="text-4xl font-bold cursor-pointer" id="close-view">
-              &times;
-            </h1>
-          </div>
-          <div class="px-5">
-            <div class="my-3">
-              <h2 class="font-semibold text-lg">Student Name:</h2>
-            </div>
-            <div class="my-3">
-              <h2 class="font-semibold text-lg">Student ID No:</h2>
-            </div>
-            <div class="my-3">
-              <h2 class="font-semibold text-lg">Email:</h2>
-            </div>
-            <div class="my-3">
-              <h2 class="font-semibold text-lg">Contact Number:</h2>
-            </div>
-            <div class="my-3">
-              <h2 class="font-semibold text-lg">Counselor:</h2>
-            </div>
-            <div class="my-3">
-              <h2 class="font-semibold text-lg">Scheduled Date and Time:</h2>
-            </div>
-            <button
-              id="ok-button"
-              class="px-10 py-3 my-3 bg-green-500 hover:bg-green-600 text-white transition duration-150 ease-in-out rounded"
-            >
-              Ok
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- View Account Details End -->
   </body>
 </html>

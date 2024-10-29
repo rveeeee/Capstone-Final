@@ -4,11 +4,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Students</title>
+    <title>Counselor</title>
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
     <link href="{% static 'css/custom.css' %}" rel="stylesheet" />
     <link href="{% static 'css/typography.css' %}" rel="stylesheet" />
-    <script defer src="{% static 'js/admin-students.js'%}"></script>
+    <script defer src="{% static 'js/admin-counselor.js'%}"></script>
   </head>
   <body class="bg-gray-100">
     <div class="flex h-full">
@@ -36,8 +36,8 @@
         <ul class="mt-2">
           <li class="mb-2 w-full group">
             <a
-              href="{% url 'admin' %}"
-              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
+              href="{% url 'admin_counselor:admin_counselor' %}"
+              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white"
             >
               <svg
                 class="h-8 w-8 mr-3 text-emerald-500 group-hover:text-white"
@@ -57,11 +57,11 @@
           </li>
           <li class="mb-2 w-full group">
             <a
-              href="{% url 'admin_counselor' %}"
-              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
+              href="{% url 'admin_counselor:admin_counselors' %}"
+              class="flex items-center p-2 font-semibold bg-green-500 rounded-md text-white transition duration-150 ease-in-out"
             >
               <svg
-                class="h-8 w-8 mr-3 text-emerald-500 group-hover:text-white"
+                class="h-8 w-8 mr-3 text-white"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -79,7 +79,7 @@
           </li>
           <li class="mb-2 w-full group">
             <a
-              href="{% url 'admin_schedule' %}"
+              href="{% url 'admin_counselor:admin_schedule' %}"
               class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
             >
               <svg
@@ -99,7 +99,7 @@
           </li>
           <li class="mb-2 w-full group">
             <a
-              href="{% url 'admin_appointment' %}"
+              href="{% url 'admin_counselor:admin_appointment' %}"
               class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
             >
               <svg
@@ -125,7 +125,7 @@
           </li>
           <li class="mb-2 w-full group">
             <a
-              href="{% url 'admin_settings' %}"
+              href="{% url 'admin_counselor:admin_settings' %}"
               class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
             >
               <svg
@@ -150,7 +150,7 @@
         <ul class="mt-2">
           <li class="mb-2 w-full group">
             <a
-              href="{% url 'admin_requests' %}"
+              href="{% url 'admin_counselor:admin_requests' %}"
               class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
             >
               <svg
@@ -175,11 +175,11 @@
           </li>
           <li class="mb-2 w-full group">
             <a
-              href="{% url 'admin_students' %}"
-              class="flex items-center p-2 font-semibold bg-green-500 rounded-md text-white transition duration-150 ease-in-out"
+              href="{% url 'admin_counselor:admin_students' %}"
+              class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
             >
               <svg
-                class="h-8 w-8 mr-3 text-white"
+                class="h-8 w-8 mr-3 text-emerald-500 group-hover:text-white"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -204,7 +204,7 @@
           </li>
           <li class="mb-2 w-full group">
             <a
-              href="{% url 'admin_feedbacks' %}"
+              href="{% url 'admin_counselor:admin_feedbacks' %}"
               class="flex items-center p-2 font-semibold hover:bg-green-500 rounded-md group-hover:text-white transition duration-150 ease-in-out"
             >
               <svg
@@ -241,7 +241,7 @@
               type="search"
               name=""
               id=""
-              placeholder="Search Student's Name"
+              placeholder="Search Counselor's Name"
               class="rounded-full pr-32"
             />
             <button
@@ -266,19 +266,29 @@
         </div>
         <!-- Main Content Start -->
         <div class="bg-white rounded-lg shadow-lg p-4 mt-3">
-          <h1 class="font-bold text-2xl mb-3">All Students</h1>
+          <div class="counselor-text-container flex justify-between">
+            <h1 class="font-bold text-2xl my-auto">Add New Counselor</h1>
+            <button
+              class="bg-green-500 hover:bg-green-600 px-10 py-2 text-white rounded-md"
+              id="add-new"
+            >
+              Add New
+            </button>
+          </div>
           <!-- Table Start -->
           <div
-            class="counselor-table border-black border max-h-96 overflow-y-auto"
+            class="counselor-table border-black border max-h-96 overflow-y-auto mt-3 rounded-md"
           >
             <table class="w-full border-collapse border">
               <thead
                 class="bg-green-700 sticky top-0 border border-black text-white"
               >
                 <tr>
-                  <th class="px-5 py-3 border border-black">Name</th>
-                  <th class="px-5 py-3 border border-black">Email</th>
-                  <th class="px-5 py-3 border border-black">Contact Number</th>
+                  <th class="px-5 py-3 border border-black">Counselor Name</th>
+                  <th class="px-5 py-3 border border-black">Email Address</th>
+                  <th class="px-5 py-3 border border-black">
+                    Department/Campus
+                  </th>
                   <th class="px-5 py-3 border border-black">Actions</th>
                 </tr>
               </thead>
@@ -288,15 +298,29 @@
                     Rey Vincent Ebreo
                   </td>
                   <td class="px-5 py-3 border border-black">
-                    November 5, 2024
+                    rveebreo@slsu.edu.ph
                   </td>
-                  <td class="px-5 py-3 border border-black">3:00 PM</td>
+                  <td class="px-5 py-3 border border-black">
+                    College of Industrial Technology
+                  </td>
                   <td class="px-5 py-3 border border-black">
                     <button
+                      id="edit-button"
+                      class="px-5 py-2 rounded bg-blue-500 text-white mx-1 inline-block hover:bg-blue-600"
+                    >
+                      Edit
+                    </button>
+                    <button
                       id="view-button"
-                      class="px-5 py-2 rounded bg-green-700 text-white mx-1 inline-block hover:bg-green-800"
+                      class="px-5 py-2 rounded bg-green-500 text-white mx-1 inline-block hover:bg-green-600"
                     >
                       View
+                    </button>
+                    <button
+                      id="delete-button"
+                      class="px-5 py-2 rounded bg-red-500 text-white mx-1 inline-block hover:bg-red-600"
+                    >
+                      Delete
                     </button>
                   </td>
                 </tr>
@@ -306,6 +330,216 @@
         </div>
       </div>
     </div>
+    <!-- Add New Counselor Start -->
+    <div
+      id="addNew-modal-background"
+      class="modal-background fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center z-50 hidden"
+    >
+      <div
+        id="addNew-details-modal"
+        class="modal bg-white p-8 rounded-lg shadow-lg w-1/2 h-4/5 overflow-y-auto xs:max-lg:w-4/5"
+      >
+        <div class="flex justify-between items-center">
+          <h1
+            class="text-center text-4xl font-bold my-5 sm:max-lg:text-2xl xs:text-xl"
+          >
+            Add New Counselor
+          </h1>
+          <h1 id="close-modal" class="text-4xl font-bold cursor-pointer">
+            &times;
+          </h1>
+        </div>
+        <form action="">
+          <div class="grid grid-cols-2 gap-4 w-full xs:max-sm:grid-cols-1">
+            <div>
+              <label for="name">Name:</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="w-full border border-black rounded-md p-2"
+              />
+            </div>
+            <div>
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="w-full border border-black rounded-md p-2"
+              />
+            </div>
+            <div>
+              <label for="college-department">College Department/Campus</label>
+              <select
+                name="college-department"
+                id="college-department"
+                class="w-full border border-black rounded-md p-2"
+              >
+                <option value="" disabled selected hidden>
+                  Select a department
+                </option>
+                <option value="CIT">College of Industrial Technology</option>
+                <option value="CTE">College of Teacher Education</option>
+                <option value="CAM">College of Allied Medicine</option>
+                <option value="CAS">College of Arts and Sciences</option>
+                <option value="CABHA">
+                  College of Administration, Business, Hospitality, and
+                  Accountancy
+                </option>
+                <option value="CEN">College of Engineering</option>
+                <option value="CAG">College of Agriculture</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="contact-number">Contact Number:</label>
+              <input
+                type="number"
+                name="contact-number"
+                id="contact-number"
+                class="w-full border border-black rounded-md p-2"
+              />
+            </div>
+            <div>
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                class="w-full border border-black rounded-md p-2"
+              />
+            </div>
+            <div>
+              <label for="confirm-password">Confirm Password:</label>
+              <input
+                type="password"
+                name="confirm-password"
+                id="confirm-password"
+                class="w-full border border-black rounded-md p-2"
+              />
+            </div>
+            <div>
+              <label for="image">Image:</label>
+              <input
+                width="48"
+                height="48"
+                type="image"
+                src=""
+                alt=""
+                class="w-full border border-black rounded-md p-2"
+              />
+            </div>
+          </div>
+          <button
+            class="px-10 py-3 my-10 rounded bg-green-500 shadow-2xl text-white hover:bg-green-600 transition duration-150 ease-in-out"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- Add New Counselor End -->
+    <!-- Edit Counselor Start -->
+    <div
+      id="edit-modal-background"
+      class="modal-background fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center z-50 hidden"
+    >
+      <div
+        id="edit-details-modal"
+        class="modal bg-white p-8 rounded-lg shadow-lg w-1/2 h-4/5 overflow-y-auto xs:max-lg:w-4/5"
+      >
+        <div class="flex justify-between items-center">
+          <h1
+            class="text-center text-4xl font-bold my-5 sm:max-lg:text-2xl xs:text-xl"
+          >
+            Edit Counselor Details
+          </h1>
+          <h1 id="edit-close-modal" class="text-4xl font-bold cursor-pointer">
+            &times;
+          </h1>
+        </div>
+        <form action="">
+          <div class="grid grid-cols-2 gap-4 w-full xs:max-sm:grid-cols-1">
+            <div>
+              <label for="name">Name:</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="w-full border border-black rounded-md p-2"
+              />
+            </div>
+            <div>
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="w-full border border-black rounded-md p-2"
+              />
+            </div>
+            <div>
+              <label for="college-department">College Department/Campus</label>
+              <select
+                name="college-department"
+                id="college-department"
+                class="w-full border border-black rounded-md p-2"
+              >
+                <option value="" disabled selected hidden>
+                  Select a department
+                </option>
+                <option value="CIT">College of Industrial Technology</option>
+                <option value="CTE">College of Teacher Education</option>
+                <option value="CAM">College of Allied Medicine</option>
+                <option value="CAS">College of Arts and Sciences</option>
+                <option value="CABHA">
+                  College of Administration, Business, Hospitality, and
+                  Accountancy
+                </option>
+                <option value="CEN">College of Engineering</option>
+                <option value="CAG">College of Agriculture</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="contact-number">Contact Number:</label>
+              <input
+                type="number"
+                name="contact-number"
+                id="contact-number"
+                class="w-full border border-black rounded-md p-2"
+              />
+            </div>
+            <div>
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                class="w-full border border-black rounded-md p-2"
+              />
+            </div>
+            <div>
+              <label for="confirm-password">Confirm Password:</label>
+              <input
+                type="password"
+                name="confirm-password"
+                id="confirm-password"
+                class="w-full border border-black rounded-md p-2"
+              />
+            </div>
+          </div>
+          <button
+            class="px-10 py-3 my-10 rounded bg-green-500 shadow-2xl text-white hover:bg-green-600 transition duration-150 ease-in-out"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- Edit Counselor End -->
+    <!-- View Account Details Start -->
     <section>
       <div
         id="view-modal-background"
@@ -317,21 +551,26 @@
         >
           <div class="flex justify-between items-center mx-5">
             <h1 class="text-center text-4xl font-bold my-5 xs:max-lg:text-2xl">
-              View Details
+              Account Details
             </h1>
             <h1 class="text-4xl font-bold cursor-pointer" id="close-view">
               &times;
             </h1>
           </div>
           <div class="px-5">
-            <div class="my-3">
-              <h2 class="font-semibold text-lg">Student Name:</h2>
+            <div class="my-3 font-semibold text-2xl">
+              <h2>View Account Details</h2>
             </div>
             <div class="my-3">
-              <h2 class="font-semibold text-lg">Student ID No:</h2>
+              <h2 class="font-semibold text-lg">Name:</h2>
             </div>
             <div class="my-3">
-              <h2 class="font-semibold text-lg">College Department/Campus:</h2>
+              <h2 class="font-semibold text-lg">
+                College Department / Campus:
+              </h2>
+            </div>
+            <div class="my-3">
+              <h2 class="font-semibold text-lg">Address:</h2>
             </div>
             <div class="my-3">
               <h2 class="font-semibold text-lg">Email:</h2>
@@ -339,9 +578,7 @@
             <div class="my-3">
               <h2 class="font-semibold text-lg">Contact Number:</h2>
             </div>
-            <div class="my-3">
-              <h2 class="font-semibold text-lg">Birth Date:</h2>
-            </div>
+
             <button
               id="ok-button"
               class="px-10 py-3 my-3 bg-green-500 hover:bg-green-600 text-white transition duration-150 ease-in-out rounded"
@@ -353,5 +590,37 @@
       </div>
     </section>
     <!-- View Account Details End -->
+    <!-- Delete Account Modal Start -->
+    <section>
+      <div
+        id="delete-modal-background"
+        class="modal-background fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center z-50 hidden"
+      >
+        <div
+          id="delete-modal"
+          class="modal bg-white p-8 rounded-lg shadow-lg w-1/2 text-center xs:max-lg:w-4/5"
+        >
+          <div class="py-3">
+            <h1 class="text-2xl font-bold">Are You Sure?</h1>
+            <h2>You want to delete your account?</h2>
+          </div>
+          <div class="yes-no mt-5">
+            <button
+              id="yes-btn-delete"
+              class="yes-button bg-red-500 px-10 py-3 mx-5 rounded text-white transition duration-150 ease-in-out hover:bg-red-600"
+            >
+              Yes
+            </button>
+            <button
+              id="no-btn-delete"
+              class="no-button bg-green-500 px-10 py-3 mx-5 rounded text-white transition duration-150 ease-in-out hover:bg-green-600"
+            >
+              No
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Delete Account Modal End -->
   </body>
 </html>
