@@ -1,23 +1,23 @@
 // Toggle dropdown visibility
 document
-  .getElementById("counselor-lists")
+  .getElementById("counselor-list")
   .addEventListener("click", function () {
-    document.getElementById("dropdown-options").classList.toggle("hidden");
+    document.getElementById("dropdown-option").classList.toggle("hidden");
   });
 
 // Update selected counselor and hide dropdown
-document.querySelectorAll("#dropdown-options div").forEach(function (option) {
+document.querySelectorAll("#dropdown-option div").forEach(function (option) {
   option.addEventListener("click", function () {
     document.getElementById("selected-counselor").textContent =
       this.textContent;
-    document.getElementById("dropdown-options").classList.add("hidden");
+    document.getElementById("dropdown-option").classList.add("hidden");
   });
 });
 
 // Hide dropdown when clicking outside
 document.addEventListener("click", function (event) {
   if (!document.querySelector(".relative").contains(event.target)) {
-    document.getElementById("dropdown-options").classList.add("hidden");
+    document.getElementById("dropdown-option").classList.add("hidden");
   }
 });
 

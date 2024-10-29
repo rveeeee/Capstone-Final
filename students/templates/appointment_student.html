@@ -102,17 +102,10 @@
           <li
             class="my-auto py-2 px-10 rounded-full box-border hover:bg-green-500 hover:text-white relative group whitespace-nowrap transition duration-150 ease-in"
           >
-            <a href="{% url 'students:student_schedule' %}">Profile</a>
+            <a href="{% url 'students:student_schedule' %}">Schedule</a>
             <ul
               class="absolute left-0 mt-2 hidden group-hover:block w-full bg-white text-black shadow-lg rounded-xl"
             >
-              <li
-                class="py-2 mt-2 rounded box-border hover:bg-green-500 hover:text-white transition duration-150 ease-in"
-              >
-                <a href="{% url 'students:student_schedule' %}" class="mx-3"
-                  >Schedule</a
-                >
-              </li>
               <li
                 class="py-2 mt-2 rounded box-border hover:bg-green-500 hover:text-white transition duration-150 ease-in"
               >
@@ -194,8 +187,8 @@
             </div>
             <div class="relative grow select-none z-10">
               <div
-                id="counselor-lists"
-                class="bg-green-700 ml-auto flex cursor-pointer items-center justify-between rounded px-4 py-1 text-white"
+                id="counselor-list"
+                class="bg-green-700 ml-auto flex cursor-pointer items-center justify-between rounded px-4 py-1 text-white relative"
               >
                 <div class="my-auto font-semibold text-base">
                   <h1 id="selected-counselor">Counselor 1</h1>
@@ -206,8 +199,8 @@
               </div>
               <!-- Counselor toggle end -->
               <div
-                id="dropdown-options"
-                class="absolute top-full left-0 w-full mt-2 bg-white rounded border-black border hidden"
+                id="dropdown-option"
+                class="absolute top-full left-0 w-full mt-2 bg-white rounded border-black border hidden z-50"
               >
                 <div
                   class="py-2 px-4 cursor-pointer hover:bg-green-400"

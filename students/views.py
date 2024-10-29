@@ -6,16 +6,16 @@ from django.contrib.auth.decorators import login_required
 @never_cache
 @login_required
 def studentAppointment(request):
-    return render(request, 'student_appointment.html', {'user': request.user})
+    return render(request, 'appointment_student.html', {'user': request.user})
 @never_cache
 @login_required
 def studentMessages(request):
-    return render(request, 'student_messages.html', {'user': request.user})
+    return render(request, 'messages_student.html', {'user': request.user})
 @never_cache
 @login_required
 def studentSchedule(request):
-    return render(request, 'student_schedule.html', {'user': request.user})
+    return render(request, 'schedule_student.html', {'user': request.user})
 @never_cache
 @login_required
 def studentSettings(request):
-    return render(request, 'student_settings.html', {'user': request.user})
+    return render(request, 'settings_student.html', {'user': request.user})
