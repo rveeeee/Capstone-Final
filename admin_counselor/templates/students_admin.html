@@ -225,11 +225,13 @@
           </li>
         </ul>
         <div class="absolute bottom-3 left-0 w-full px-4">
-          <button
-            class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600"
-          >
-            Log Out
-          </button>
+          <a href="{% url 'users:logOut' %}">
+            <button
+              class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600"
+            >
+              Log Out
+            </button>
+          </a>
         </div>
       </nav>
       <!-- Navbar End -->
