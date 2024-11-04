@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const addNewButton = document.getElementById("add-new");
   const addNewModalBackground = document.getElementById(
-    "addNew-modal-background",
+    "addNew-modal-background"
   );
   const closeModalButton = document.getElementById("close-modal");
 
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const deleteButton = document.getElementById("delete-button");
   const deleteModalBackground = document.getElementById(
-    "delete-modal-background",
+    "delete-modal-background"
   );
   const noButton = document.getElementById("no-btn-delete");
 

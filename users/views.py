@@ -9,6 +9,9 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.views import View
 from .forms import LoginForm
+from counselor.models import Counselor  # Assuming Counselor model exists in counselors app
+from admin_counselor.models import AdminCounselor  # Assuming AdminCounselor model exists in admin_counselor app
+
 
 logger = logging.getLogger(__name__)
 
@@ -55,9 +58,23 @@ def logIn(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(request, username=username, password=password)
+            
             if user is not None:
                 login(request, user)
-                return redirect('students:student_schedule')  # Replace 'home' with the desired redirect page after login
+
+                # Check if the user is an admin counselor
+                if AdminCounselor.objects.filter(user=user).exists():
+                    # Redirect to admin counselor app
+                    return redirect('admin_counselor:admin_dashboard')  # Adjust to your actual admin counselor URL
+
+                # Check if the user is a counselor
+                elif Counselor.objects.filter(user=user).exists():
+                    # Redirect to counselors app
+                    return redirect('counselor:counselor_dashboard')  # Adjust to your actual counselors URL
+                
+                # Otherwise, redirect to students app
+                else:
+                    return redirect('students:student_schedule')  # Adjust to the actual student redirect URL
             else:
                 messages.error(request, "Invalid username or password.")
         else:

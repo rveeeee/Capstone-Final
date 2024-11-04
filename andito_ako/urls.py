@@ -24,9 +24,9 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('appointment/', views.appointmentPage, name='appointment'),
     
-    path('', include('users.urls')),
-    path('', include('students.urls')),
-    path('', include('counselor.urls')),
-    path('', include('admin_counselor.urls')),
+    path('users/', include('users.urls')),
+    path('students/', include('students.urls')),
+    path('counselor/', include('counselor.urls')),
+    path('admin_counselor/', include('admin_counselor.urls')),
 
 ]

@@ -349,7 +349,8 @@
             &times;
           </h1>
         </div>
-        <form action="">
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
           <div class="grid grid-cols-2 gap-4 w-full xs:max-sm:grid-cols-1">
             <div>
               <label for="name">Name:</label>
@@ -358,38 +359,18 @@
                 name="name"
                 id="name"
                 class="w-full border border-black rounded-md p-2"
+                value="{{ form.name.value|default:'' }}"
               />
             </div>
             <div>
-              <label for="email">Email:</label>
+              <label for="username">Username:</label>
               <input
-                type="email"
-                name="email"
-                id="email"
+                type="text"
+                name="username"
+                id="username"
                 class="w-full border border-black rounded-md p-2"
+                value="{{ form.username.value|default:'' }}"
               />
-            </div>
-            <div>
-              <label for="college-department">College Department/Campus</label>
-              <select
-                name="college-department"
-                id="college-department"
-                class="w-full border border-black rounded-md p-2"
-              >
-                <option value="" disabled selected hidden>
-                  Select a department
-                </option>
-                <option value="CIT">College of Industrial Technology</option>
-                <option value="CTE">College of Teacher Education</option>
-                <option value="CAM">College of Allied Medicine</option>
-                <option value="CAS">College of Arts and Sciences</option>
-                <option value="CABHA">
-                  College of Administration, Business, Hospitality, and
-                  Accountancy
-                </option>
-                <option value="CEN">College of Engineering</option>
-                <option value="CAG">College of Agriculture</option>
-              </select>
             </div>
 
             <div>
@@ -399,6 +380,17 @@
                 name="contact-number"
                 id="contact-number"
                 class="w-full border border-black rounded-md p-2"
+                value="{{ form.contact-number.value|default:'' }}"
+              />
+            </div>
+            <div>
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="w-full border border-black rounded-md p-2"
+                value="{{ form.email.value|default:'' }}"
               />
             </div>
             <div>
@@ -408,6 +400,7 @@
                 name="password"
                 id="password"
                 class="w-full border border-black rounded-md p-2"
+                value="{{ form.password.value|default:'' }}"
               />
             </div>
             <div>
@@ -417,29 +410,95 @@
                 name="confirm-password"
                 id="confirm-password"
                 class="w-full border border-black rounded-md p-2"
+                value="{{ form.confirm-password.value|default:'' }}"
               />
             </div>
             <div>
+              <label>College Department/Campus:</label>
+              <div class="mt-2 border border-black p-2 rounded-md">
+                <label class="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    name="college-department"
+                    value="CIT"
+                  />
+                  <span>College of Industrial Technology</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    name="college-department"
+                    value="CTE"
+                  />
+                  <span>College of Teacher Education</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    name="college-department"
+                    value="CAM"
+                  />
+                  <span>College of Allied Medicine</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    name="college-department"
+                    value="CAS"
+                  />
+                  <span>College of Arts and Sciences</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    name="college-department"
+                    value="CABHA"
+                  />
+                  <span
+                    >College of Administration, Business, Hospitality, and
+                    Accountancy</span
+                  >
+                </label>
+                <label class="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    name="college-department"
+                    value="CEN"
+                  />
+                  <span>College of Engineering</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    name="college-department"
+                    value="CAG"
+                  />
+                  <span>College of Agriculture</span>
+                </label>
+              </div>
+              {% if form.college-department.errors %}
+              <div class="text-red-500">
+                {{ form.college-department.errors }}
+              </div>
+              {% endif %}
+            </div>
+
+            <div>
               <label for="image">Image:</label>
-              <input
-                width="48"
-                height="48"
-                type="image"
-                src=""
-                alt=""
-                class="w-full border border-black rounded-md p-2"
-              />
+              <input type="file" name="image" id="image" accept="image/*" />
             </div>
           </div>
           <button
-            class="px-10 py-3 my-10 rounded bg-green-500 shadow-2xl text-white hover:bg-green-600 transition duration-150 ease-in-out"
+            type="submit"
+            class="px-10 py-3 my-5 rounded bg-green-500 shadow-2xl text-white hover:bg-green-600 transition duration-150 ease-in-out"
           >
-            Save
+            Add Counselor
           </button>
         </form>
       </div>
     </div>
     <!-- Add New Counselor End -->
+
     <!-- Edit Counselor Start -->
     <div
       id="edit-modal-background"
@@ -459,7 +518,8 @@
             &times;
           </h1>
         </div>
-        <form action="">
+        <form method="POST">
+          {% csrf_token %}
           <div class="grid grid-cols-2 gap-4 w-full xs:max-sm:grid-cols-1">
             <div>
               <label for="name">Name:</label>
@@ -468,7 +528,11 @@
                 name="name"
                 id="name"
                 class="w-full border border-black rounded-md p-2"
+                value="{{ form.name.value|default:'' }}"
               />
+              {% if form.name.errors %}
+              <div class="text-red-500">{{ form.name.errors }}</div>
+              {% endif %}
             </div>
             <div>
               <label for="email">Email:</label>
@@ -477,8 +541,13 @@
                 name="email"
                 id="email"
                 class="w-full border border-black rounded-md p-2"
+                value="{{ form.email.value|default:'' }}"
               />
+              {% if form.email.errors %}
+              <div class="text-red-500">{{ form.email.errors }}</div>
+              {% endif %}
             </div>
+
             <div>
               <label for="college-department">College Department/Campus</label>
               <select
@@ -489,17 +558,41 @@
                 <option value="" disabled selected hidden>
                   Select a department
                 </option>
-                <option value="CIT">College of Industrial Technology</option>
-                <option value="CTE">College of Teacher Education</option>
-                <option value="CAM">College of Allied Medicine</option>
-                <option value="CAS">College of Arts and Sciences</option>
+                <option value="CIT">
+                  {% if form.college-department.value == "CIT" %}selected{%
+                  endif %}College of Industrial Technology
+                </option>
+                <option value="CTE">
+                  {% if form.college-department.value == "CTE" %}selected{%
+                  endif %}College of Teacher Education
+                </option>
+                <option value="CAM">
+                  {% if form.college-department.value == "CAM" %}selected{%
+                  endif %}College of Allied Medicine
+                </option>
+                <option value="CAS">
+                  {% if form.college-department.value == "CAS" %}selected{%
+                  endif %}College of Arts and Sciences
+                </option>
                 <option value="CABHA">
-                  College of Administration, Business, Hospitality, and
+                  {% if form.college-department.value == "CABHA" %}selected{%
+                  endif %} College of Administration, Business, Hospitality, and
                   Accountancy
                 </option>
-                <option value="CEN">College of Engineering</option>
-                <option value="CAG">College of Agriculture</option>
+                <option value="CEN">
+                  {% if form.college-department.value == "CEN" %}selected{%
+                  endif %}College of Engineering
+                </option>
+                <option value="CAG">
+                  {% if form.college-department.value == "CAG" %}selected{%
+                  endif %}College of Agriculture
+                </option>
               </select>
+              {% if form.college-department.errors %}
+              <div class="text-red-500">
+                {{ form.college-department.errors }}
+              </div>
+              {% endif %}
             </div>
 
             <div>
@@ -509,7 +602,11 @@
                 name="contact-number"
                 id="contact-number"
                 class="w-full border border-black rounded-md p-2"
+                value="{{ form.contact-number.value|default:'' }}"
               />
+              {% if form.contact-number.errors %}
+              <div class="text-red-500">{{ form.contact-number.errors }}</div>
+              {% endif %}
             </div>
             <div>
               <label for="password">Password:</label>
@@ -518,7 +615,11 @@
                 name="password"
                 id="password"
                 class="w-full border border-black rounded-md p-2"
+                value="{{ form.password.value|default:'' }}"
               />
+              {% if form.password.errors %}
+              <div class="text-red-500">{{ form.password.errors }}</div>
+              {% endif %}
             </div>
             <div>
               <label for="confirm-password">Confirm Password:</label>
@@ -527,7 +628,11 @@
                 name="confirm-password"
                 id="confirm-password"
                 class="w-full border border-black rounded-md p-2"
+                value="{{ form.confirm-password.value|default:'' }}"
               />
+              {% if form.confirm-password.errors %}
+              <div class="text-red-500">{{ form.confirm-password.errors }}</div>
+              {% endif %}
             </div>
           </div>
           <button
