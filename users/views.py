@@ -89,7 +89,6 @@ def logOut(request):
     logout(request)
     return redirect('users:logIn')  # Redirect to the login page after logout
 
-# from django.contrib.auth.decorators import login_required
 
 # @login_required
 # def some_protected_view(request):
