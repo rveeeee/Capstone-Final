@@ -65,7 +65,7 @@ def logIn(request):
                 # Check if the user is an admin counselor
                 if AdminCounselor.objects.filter(user=user).exists():
                     # Redirect to admin counselor app
-                    return redirect('admin_counselor:admin_dashboard')  # Adjust to your actual admin counselor URL
+                    return redirect('admin_counselor:admin_counselor')  # Adjust to your actual admin counselor URL
 
                 # Check if the user is a counselor
                 elif Counselor.objects.filter(user=user).exists():
