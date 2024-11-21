@@ -58,18 +58,21 @@
     >
       <div class="flex my-auto">
         <div class="h-16 ml-5 flex text-nowrap">
-          <img
-            src="{% static 'images/new_logo.jpg' %}"
-            alt=""
-            class="h-full cursor-pointer mr-3"
-          />
-          <h1
-            class="text-4xl font-semibold mr-10 my-auto text-green-500 poppins animate-letters"
+          <a href="/">
+            <img
+              src="{% static 'images/new_logo.jpg' %}"
+              alt=""
+              class="h-full cursor-pointer mr-3"
+          /></a>
+          <a href="/" class="my-auto">
+            <h1
+              class="text-4xl font-semibold mr-10 my-auto text-green-500 poppins animate-letters"
+            >
+              <span>A</span><span>N</span><span>D</span><span>I</span
+              ><span>T</span><span>O</span><span>&nbsp;</span><span>A</span
+              ><span>K</span><span>O</span>
+            </h1></a
           >
-            <span>A</span><span>N</span><span>D</span><span>I</span
-            ><span>T</span><span>O</span><span>&nbsp;</span><span>A</span
-            ><span>K</span><span>O</span>
-          </h1>
         </div>
       </div>
       <div class="my-auto">
@@ -77,26 +80,30 @@
           class="mylinks xs:max-lg:hidden poppins uppercase flex animate-fade-in text-nowrap"
         >
           <a
-            href="/"
-            class="my-auto mx-2 py-2 px-7 text-white rounded-full transition duration-150 ease-in bg-green-500"
+            href="#home"
+            id="home-link"
+            class="nav-link my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in bg-green-500 text-white"
           >
-            <li>Home</li></a
-          >
+            <li>Home</li>
+          </a>
           <a
-            href="#services-id"
-            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+            href="#services"
+            id="services-link"
+            class="nav-link my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
           >
             <li>Services</li>
           </a>
           <a
-            href="#about-us-id"
-            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white text-nowrap"
+            href="#about"
+            id="about-link"
+            class="nav-link my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
           >
             <li>About Us</li>
           </a>
           <a
-            href="#contacts-id"
-            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+            href="#contacts"
+            id="contacts-link"
+            class="nav-link my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
           >
             <li>Contacts</li>
           </a>
@@ -133,7 +140,7 @@
     </nav>
     <!-- Navigation Bar End -->
     <!-- Hero Section Start -->
-    <section class="pt-16">
+    <section class="pt-16" id="home">
       <!-- Added margin-top here -->
       <div
         class="!bg-cover min-h-screen w-auto !bg-bottom !bg-no-repeat hero-image"
@@ -167,20 +174,13 @@
                 Sign Up
               </button></a
             >
-            <a href="{% url 'admin_counselor:admin_counselor' %}">
-              <button
-                class="xs:max-sm:px-10 px-14 py-2 bg-transparent border-2 text-pink-500 border-pink-500 rounded-full hover:bg-pink-600 hover:text-white transform duration-200 ease-in-out animate-bounce-in"
-              >
-                TRY
-              </button></a
-            >
           </div>
         </div>
       </div>
     </section>
     <!-- Hero Section End -->
     <!-- Second Section Start -->
-    <section id="services-id">
+    <section id="services">
       <div class="!bg-cover !bg-no-repeat !bg-bottom min-h-screen w-auto">
         <div class="paragraph-container py-10">
           <p
@@ -244,6 +244,7 @@
       </div>
     </section>
     <br /><br />
+    {% comment %}
     <!-- Video Section Start -->
     <section>
       <div class="video-section-container p-10">
@@ -398,8 +399,9 @@
       </div>
     </div>
     <!-- Second Section End -->
+    {% endcomment %}
     <!-- Feature Section Start -->
-    <section>
+    <section id="about">
       <div class="feature-container h-auto w-auto p-10">
         <div class="feature-header text-center mb-16 animate-fade-in">
           <p class="font-medium text-xl">FEATURES</p>
@@ -467,10 +469,6 @@
           </div>
         </div>
       </div>
-    </section>
-    <!-- Feature Section Ends -->
-    <!-- Guidance Counselor Section Start -->
-    <section>
       <div class="guidance-counselor-container px-10 m-10" id="team">
         <div class="guidance-counselor-header mb-10 slide-in">
           <p class="font-extralight" id="about-us-id">
@@ -629,94 +627,95 @@
           </div>
         </div>
       </div>
-    </section>
-    <!-- Guidance Counselor Section End -->
-    <!-- FAQs Section Start -->
-    <section id="faq">
-      <div class="faqs-container p-10 m-10 rounded-md">
-        <div class="faqs-content">
-          <div class="faqs-header text-black text-center">
-            <div class="faqs-header text-black text-center fade-backward">
-              <div class="flex justify-center">
-                <h1 class="p-2 text-4xl poppins">Frequently Ask Questions</h1>
-                <svg
-                  class="h-10 w-10 text-emerald-500 my-auto"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
+      <!-- FAQs Section Start -->
+      <section id="faq">
+        <div class="faqs-container p-10 m-10 rounded-md">
+          <div class="faqs-content">
+            <div class="faqs-header text-black text-center">
+              <div class="faqs-header text-black text-center fade-backward">
+                <div class="flex justify-center">
+                  <h1 class="p-2 text-4xl poppins">Frequently Ask Questions</h1>
+                  <svg
+                    class="h-10 w-10 text-emerald-500 my-auto"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <p class="text-lg">
+                  Find answers to common questions about the mental health
+                  services available to students.
+                </p>
               </div>
-              <p class="text-lg">
-                Find answers to common questions about the mental health
-                services available to students.
-              </p>
             </div>
-          </div>
-          <div class="flex gap-3 xs:max-sm:flex-col">
-            <div
-              class="one-by-one rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
-            >
-              <h2 class="font-bold text-xl mx-3">
-                What mental health services are available to students at the
-                university?
-              </h2>
-              <p class="mx-3 mt-5">
-                We offer a range of services including individual counseling,
-                group therapy, workshops, and crisis intervention.
-              </p>
+            <div class="flex gap-3 xs:max-sm:flex-col">
+              <div
+                class="one-by-one rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
+              >
+                <h2 class="font-bold text-xl mx-3">
+                  What mental health services are available to students at the
+                  university?
+                </h2>
+                <p class="mx-3 mt-5">
+                  We offer a range of services including individual counseling,
+                  group therapy, workshops, and crisis intervention.
+                </p>
+              </div>
+              <div
+                class="one-by-one rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
+              >
+                <h2 class="font-bold text-xl mx-3">
+                  How can I make an appointment with a counselor?
+                </h2>
+                <p class="mx-3 mt-5">
+                  You can schedule an appointment by visiting our office,
+                  calling our hotline, or using our online booking system
+                  available on the university's mental health services webpage.
+                </p>
+              </div>
             </div>
-            <div
-              class="one-by-one rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
-            >
-              <h2 class="font-bold text-xl mx-3">
-                How can I make an appointment with a counselor?
-              </h2>
-              <p class="mx-3 mt-5">
-                You can schedule an appointment by visiting our office, calling
-                our hotline, or using our online booking system available on the
-                university's mental health services webpage.
-              </p>
-            </div>
-          </div>
-          <div class="flex gap-3 xs:max-sm:flex-col">
-            <div
-              class="one-by-one rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
-            >
-              <h2 class="font-bold text-xl mx-3">
-                Are the counseling sessions confidential?
-              </h2>
-              <p class="mx-3 mt-5">
-                Yes, all counseling sessions are confidential. Information
-                shared during sessions will not be disclosed without your
-                consent, except in cases where there is a risk of harm to
-                yourself or others.
-              </p>
-            </div>
-            <div
-              class="one-by-one rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
-            >
-              <h2 class="font-bold text-xl mx-3">
-                Is there a cost associated with using mental health services?
-              </h2>
-              <p class="mx-3 mt-5">
-                No, mental health services are provided free of charge to all
-                currently enrolled students.
-              </p>
+            <div class="flex gap-3 xs:max-sm:flex-col">
+              <div
+                class="one-by-one rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
+              >
+                <h2 class="font-bold text-xl mx-3">
+                  Are the counseling sessions confidential?
+                </h2>
+                <p class="mx-3 mt-5">
+                  Yes, all counseling sessions are confidential. Information
+                  shared during sessions will not be disclosed without your
+                  consent, except in cases where there is a risk of harm to
+                  yourself or others.
+                </p>
+              </div>
+              <div
+                class="one-by-one rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
+              >
+                <h2 class="font-bold text-xl mx-3">
+                  Is there a cost associated with using mental health services?
+                </h2>
+                <p class="mx-3 mt-5">
+                  No, mental health services are provided free of charge to all
+                  currently enrolled students.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+      <!-- FAQs Section End -->
     </section>
-    <!-- FAQs Section End -->
+    <!-- Feature Section Ends -->
+
     <!-- Map Section Start -->
-    <section id="contacts-id">
+    <section id="contacts">
       <div class="contact-us-container mx-10 px-10">
         <div
           class="p-3 text-center flex justify-center bg-contacts-header fade-in"
@@ -828,10 +827,6 @@
           </div>
         </div>
       </div>
-    </section>
-    <!-- Map Section End -->
-    <!-- Form Section Start -->
-    <section>
       <div class="form-full-container mx-10 px-10">
         <div
           class="form-header bg-contacts-header text-white px-5 py-2 fade-in"
@@ -919,10 +914,6 @@
           </div>
         </div>
       </div>
-    </section>
-    <!-- Form Section End -->
-    <!-- CTA Start -->
-    <section>
       <div class="cta-services-container p-10">
         <h1 class="font-bold text-6xl md:hidden">
           Take control of your mental health
@@ -957,7 +948,8 @@
         </div>
       </div>
     </section>
-    <!-- CTA End -->
+    <!-- Map Section End -->
+
     <!-- Footer Start -->
     <footer class="bg-green-700">
       <div

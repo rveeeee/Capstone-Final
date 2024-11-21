@@ -1,23 +1,35 @@
 // Toggle dropdown visibility
+// Toggle dropdown visibility on click
 document
   .getElementById("counselor-list")
   .addEventListener("click", function () {
-    document.getElementById("dropdown-option").classList.toggle("hidden");
+    const dropdown = document.getElementById("dropdown-option");
+    dropdown.classList.toggle("hidden");
   });
 
 // Update selected counselor and hide dropdown
 document.querySelectorAll("#dropdown-option div").forEach(function (option) {
   option.addEventListener("click", function () {
+    // Update selected counselor text
     document.getElementById("selected-counselor").textContent =
       this.textContent;
+
+    // Hide dropdown
     document.getElementById("dropdown-option").classList.add("hidden");
   });
 });
 
 // Hide dropdown when clicking outside
 document.addEventListener("click", function (event) {
-  if (!document.querySelector(".relative").contains(event.target)) {
-    document.getElementById("dropdown-option").classList.add("hidden");
+  const counselorList = document.getElementById("counselor-list");
+  const dropdown = document.getElementById("dropdown-option");
+
+  // Close dropdown if clicked outside
+  if (
+    !counselorList.contains(event.target) &&
+    !dropdown.contains(event.target)
+  ) {
+    dropdown.classList.add("hidden");
   }
 });
 
@@ -124,3 +136,57 @@ document.getElementById("next").addEventListener("click", function () {
 });
 
 updateMonthYear();
+// Show modal on weekday click
+// Show modal on weekday click (ignore weekends)
+document.getElementById("days").addEventListener("click", function (event) {
+  const target = event.target.closest("[data-day]");
+  if (target) {
+    const day = target.dataset.day;
+    const monthYear = document.getElementById("month-year").textContent;
+
+    // Get month, year, and convert day into a full date object
+    const [monthName, year] = monthYear.split(", ");
+    const monthIndex = months.indexOf(monthName); // Convert month name to index
+    const selectedDate = new Date(year, monthIndex, day);
+
+    // Check if the clicked date is a weekend
+    const dayOfWeek = selectedDate.getDay();
+    if (dayOfWeek === 0 || dayOfWeek === 6) {
+      // It's a weekend, so do nothing
+      console.log("Weekends are not allowed.");
+      return;
+    }
+
+    // Format the date as "Month, Date, Year"
+    const formattedDate = `${months[monthIndex]} ${day}, ${year}`;
+
+    // Set the default date in the modal
+    document.getElementById("appointmentDate").value = formattedDate;
+
+    // Show modal
+    document.getElementById("appointmentModal").classList.remove("hidden");
+  }
+});
+
+// Close modal logic
+document.getElementById("closeModal").addEventListener("click", function () {
+  document.getElementById("appointmentModal").classList.add("hidden");
+});
+
+// Optional: Handle form submission
+document
+  .getElementById("appointmentForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const date = document.getElementById("appointmentDate").value;
+    const time = document.getElementById("appointmentTime").value;
+    const counselor = document.getElementById("counselor").value;
+
+    console.log("Appointment details:", { date, time, counselor });
+
+    // Hide modal after submission
+    document.getElementById("appointmentModal").classList.add("hidden");
+
+    // Add logic to send data to the server
+  });

@@ -1,41 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const observerOptions = {
-    root: null, // Use the viewport as the root
-    rootMargin: "0px 0px -50px 0px", // Ensure the element is 50px inside the viewport before triggering
-    threshold: 0.1, // Trigger animation when 10% of the element is visible
-  };
+  // Temporarily disable the IntersectionObserver to prevent animations
+  // const observerOptions = {
+  //   root: null,
+  //   rootMargin: "0px 0px -50px 0px",
+  //   threshold: 0.1,
+  // };
 
-  const observerCallback = (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("animate-visible"); // Add class to trigger animation
-        observer.unobserve(entry.target); // Stop observing once it's animated
-      }
-    });
-  };
+  // const observerCallback = (entries, observer) => {
+  //   entries.forEach((entry) => {
+  //     if (entry.isIntersecting) {
+  //       entry.target.classList.add("animate-visible"); // Comment out to disable
+  //       observer.unobserve(entry.target);
+  //     }
+  //   });
+  // };
 
-  const observer = new IntersectionObserver(observerCallback, observerOptions);
+  // const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-  // Select all elements that need to animate on scroll
-  const elementsToAnimate = document.querySelectorAll(
-    ".animate-fade-in, .slide-in, .animate-bounce-in, .hero-image, .offer-container > div, .feature-container img, .communication-image, .form-image img, .cta-services-container img"
-  );
+  // const elementsToAnimate = document.querySelectorAll(
+  //   ".animate-fade-in, .slide-in, .animate-bounce-in, .slide-in-right, .fade-backward, .one-by-one"
+  // );
 
-  // Start observing each element for the scroll-based animation trigger
-  elementsToAnimate.forEach((el) => observer.observe(el));
+  // elementsToAnimate.forEach((el) => observer.observe(el));
 
   // Special case for animated text (letters)
   const letters = document.querySelectorAll(".animate-letters span");
-  letters.forEach((letter, index) => {
-    letter.style.animationDelay = `${index * 0.1}s`; // Delays for each letter
-    letter.classList.add("animate-visible"); // Trigger animation as soon as page loads
-  });
-
-  // FAQ items with delay animation on scroll
-  const faqItems = document.querySelectorAll(".one-by-one");
-  faqItems.forEach((item, index) => {
-    setTimeout(() => {
-      item.classList.add("fade-in");
-    }, index * 500); // Delay each item animation by 500ms
+  letters.forEach((letter) => {
+    letter.style.animationDelay = "0s"; // Remove any animation delay
+    letter.classList.remove("animate-visible"); // Prevent animation from triggering
   });
 });

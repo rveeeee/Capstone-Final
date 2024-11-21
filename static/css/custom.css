@@ -1,3 +1,45 @@
+/* Temporarily disable animations for debugging */
+
+/* .animate-fade-in {
+  opacity: 1; /* Ensure full visibility without fade-in */
+  transition: none; /* Remove transition effects */
+} */
+
+.slide-in {
+  transform: none; /* Disable slide-in transform */
+  opacity: 1; /* Full visibility */
+  transition: none; /* Remove transition effects */
+}
+
+.slide-in-right {
+  transform: none; /* Disable slide-in from the right */
+  opacity: 1; /* Full visibility */
+  transition: none; /* Remove transition effects */
+}
+
+.fade-backward {
+  transform: none; /* Disable scaling animation */
+  opacity: 1; /* Full visibility */
+  transition: none; /* Remove transition effects */
+}
+
+.animate-bounce-in {
+  transform: none; /* Disable bounce-in scaling */
+  opacity: 1; /* Full visibility */
+  transition: none; /* Remove transition effects */
+}
+
+.one-by-one {
+  opacity: 1; /* Full visibility without staggered effect */
+  transition: none; /* Remove transition effects */
+}
+
+.scale-forward {
+  transform: none; /* Disable scaling */
+  opacity: 1; /* Full visibility */
+}
+
+/* Other styles for structure and appearance (unchanged) */
 .no-arrows::-webkit-outer-spin-button,
 .no-arrows::-webkit-inner-spin-button {
   @apply appearance-none;
@@ -5,10 +47,9 @@
 }
 
 .no-arrows {
-  @apply -moz-appearance:textfield; /* Firefox */
+  @apply -moz-appearance:textfield;
 }
 
-/* Hide the up and down arrows on number input fields */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -16,7 +57,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 input[type="number"] {
-  -moz-appearance: textfield; /* Remove the spinners in Firefox */
+  -moz-appearance: textfield;
 }
 
 .navbar-links {
@@ -42,49 +83,15 @@ input[type="number"] {
 .bg-login {
   background: url(/static/images/bg-login.png);
 }
+
 .login-wrapper {
   backdrop-filter: blur(20px);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-/* .appointment-wrapper {
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-} */
-
-/* Admmin Customs Starts Here */
 .sidebar {
   background: #024409;
-}
-
-/* .img-white {
-  filter: brightness(0) invert(1);
-} */
-
-/* Remove the clear (x) button in the search input field */
-input[type="search"]::-webkit-search-cancel-button {
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-input[type="search"]::-ms-clear {
-  display: none;
-  width: 0;
-  height: 0;
-}
-
-input[type="search"]::-ms-reveal {
-  display: none;
-  width: 0;
-  height: 0;
-}
-
-input[type="search"] {
-  -moz-appearance: textfield;
-  -webkit-appearance: none;
-  appearance: none;
 }
 
 .status-containers,
@@ -96,24 +103,15 @@ input[type="search"] {
   background: #5cf86b;
 }
 
-/* Admin Customs Ends Here */
-
-/* Counselor Customs Starts Here */
 .counselor-text-container-settings,
 .counselor-table {
   background: #f1e8e8;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-/* Counselor Customs Ends Here */
 
-/* Student Customs Start Here */
 .profile-image {
   background-image: url(/static/images/profile-bg.png);
 }
-
-/* .date-filter {
-  background: rgba(255, 255, 255, 0.61);
-} */
 
 .reschedule-pop-up,
 .delete-pop-up {
@@ -164,19 +162,15 @@ input[type="search"] {
 .no-button {
   background-color: #22c55e;
 }
-/* Student Customs Ends Here */
-
-/* Appointment Calendar Start */
 
 .counselor-dropdown {
   background: #1f6a27;
 }
-/* Appointment Calendar End */
+
 .modal-open {
   overflow: hidden;
 }
 
-/* Ensure basic show/hide functionality without transitions */
 .relative {
   position: relative;
 }
@@ -187,7 +181,7 @@ input[type="search"] {
   left: 0;
   right: 0;
   text-align: center;
-  background-color: transparent; /* Adjust as needed */
+  background-color: transparent;
 }
 
 .today-label {
@@ -196,7 +190,7 @@ input[type="search"] {
   left: 0;
   right: 0;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 0.2rem;
 }
 
@@ -208,7 +202,6 @@ input[type="search"] {
   display: none;
 }
 
-/*Calendar profile Start */
 .calendar-input::-webkit-calendar-picker-indicator {
   display: none;
 }
@@ -217,159 +210,4 @@ input[type="search"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-}
-/*Calendar profile End*/
-
-/* Animations */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(250px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes bounceIn {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-  60% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes fadeBackward {
-  0% {
-    opacity: 0;
-    transform: scale(1.4);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes scaleForward {
-  0% {
-    transform: scale(0);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes letterFadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 2s ease-in-out;
-}
-
-.slide-in {
-  animation: slideIn 1.5s ease-in-out;
-}
-
-.slide-in-right {
-  animation: slideInRight 1.5s ease 0s 1 normal forwards;
-}
-
-.animate-bounce-in {
-  animation: bounceIn 1s ease-in-out;
-}
-
-.fade-backward {
-  animation: fadeBackward 1.5s ease-in-out 0s 1 normal forwards;
-}
-
-.animate-letters span {
-  opacity: 0;
-  display: inline-block;
-  animation: letterFadeIn 1.5s forwards;
-}
-
-.animate-letters span:nth-child(1) {
-  animation-delay: 0s;
-}
-.animate-letters span:nth-child(2) {
-  animation-delay: 0.1s;
-}
-.animate-letters span:nth-child(3) {
-  animation-delay: 0.2s;
-}
-.animate-letters span:nth-child(4) {
-  animation-delay: 0.3s;
-}
-.animate-letters span:nth-child(5) {
-  animation-delay: 0.4s;
-}
-.animate-letters span:nth-child(6) {
-  animation-delay: 0.5s;
-}
-.animate-letters span:nth-child(7) {
-  animation-delay: 0.6s;
-}
-.animate-letters span:nth-child(8) {
-  animation-delay: 0.7s;
-}
-.animate-letters span:nth-child(9) {
-  animation-delay: 0.8s;
-}
-.animate-letters span:nth-child(10) {
-  animation-delay: 0.9s;
-}
-.one-by-one {
-  opacity: 0;
-}
-
-.fade-in {
-  animation: fadeIn 1s ease-in forwards;
-}
-.scale-forward {
-  animation: scaleForward 1.5s ease 0s 1 normal forwards;
 }

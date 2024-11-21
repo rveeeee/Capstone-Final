@@ -188,7 +188,7 @@
             <div class="relative grow select-none z-10">
               <div
                 id="counselor-list"
-                class="bg-green-700 ml-auto flex cursor-pointer items-center justify-between rounded px-4 py-1 text-white relative"
+                class="bg-green-700 ml-auto flex cursor-pointer items-center justify-between rounded px-4 py-1 text-white relative z-20"
               >
                 <div class="my-auto font-semibold text-base">
                   <h1 id="selected-counselor">Counselor 1</h1>
@@ -280,6 +280,7 @@
             id="days"
           ></div>
         </div>
+        {% comment %}
         <div class="login-wrapper my-5 rounded-md flex flex-col space-y-7">
           <div class="font-semibold text-xl mt-5 mx-5">
             <h3>Time</h3>
@@ -320,8 +321,70 @@
             </div>
           </div>
         </div>
+        {% endcomment %}
       </div>
     </section>
     <!-- Calendar Section End -->
+    <!-- Modal -->
+    <div
+      id="appointmentModal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50"
+    >
+      <div class="bg-white rounded-lg shadow-lg w-96 p-6">
+        <h2 class="text-xl font-semibold mb-4 text-green-700">
+          Book An Appointment
+        </h2>
+        <form id="appointmentForm">
+          <div class="mb-4">
+            <label for="appointmentDate" class="block text-gray-700"
+              >Date</label
+            >
+            <input
+              type="text"
+              id="appointmentDate"
+              class="w-full border border-gray-300 rounded p-2"
+              readonly
+            />
+          </div>
+          <div class="mb-4">
+            <label for="appointmentTime" class="block text-gray-700"
+              >Time</label
+            >
+            <input
+              type="time"
+              id="appointmentTime"
+              class="w-full border border-gray-300 rounded p-2"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="counselor" class="block text-gray-700">Counselor</label>
+            <select
+              id="counselor"
+              class="w-full border border-gray-300 rounded p-2"
+            >
+              <option value="counselor1">Counselor 1</option>
+              <option value="counselor2">Counselor 2</option>
+              <option value="counselor3">Counselor 3</option>
+              <option value="counselor4">Counselor 4</option>
+            </select>
+          </div>
+          <div class="flex justify-end gap-4">
+            <button
+              type="submit"
+              class="px-4 py-2 bg-green-500 text-white rounded"
+            >
+              Book
+            </button>
+            <button
+              type="button"
+              id="closeModal"
+              class="px-4 py-2 bg-red-500 text-white rounded"
+            >
+              Close
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
