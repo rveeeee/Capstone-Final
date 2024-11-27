@@ -1,4 +1,35 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
+  // Modal functionality for terms and conditions
+  const termsButton = document.getElementById("terms-condition");
+  const termsModal = document.getElementById("termsModal");
+  const closeModalButton = document.getElementById("closeModal");
+
+  termsButton.addEventListener("click", () => {
+    termsModal.classList.remove("hidden");
+    termsModal.classList.add("flex");
+  });
+
+  closeModalButton.addEventListener("click", () => {
+    termsModal.classList.remove("flex");
+    termsModal.classList.add("hidden");
+  });
+
+  // Your existing JavaScript code
+  const menuButton = document.getElementById("menu");
+  const sidePanel = document.getElementById("side-panel");
+  const closeButton = document.getElementById("closeButton");
+
+  menuButton.addEventListener("click", () => {
+    sidePanel.classList.remove("translate-x-full");
+    sidePanel.classList.add("translate-x-0");
+  });
+
+  closeButton.addEventListener("click", () => {
+    sidePanel.classList.remove("translate-x-0");
+    sidePanel.classList.add("translate-x-full");
+  });
+
+  // Navigation link highlighting
   const navLinks = document.querySelectorAll(".nav-link");
 
   function removeActiveClasses() {
@@ -40,40 +71,28 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-});
 
-document.getElementById("menu").addEventListener("click", function () {
-  var sidePanel = document.getElementById("side-panel");
-  if (sidePanel.classList.contains("translate-x-full")) {
-    sidePanel.classList.remove("translate-x-full");
-    sidePanel.classList.add("translate-x-0");
-  } else {
-    sidePanel.classList.remove("translate-x-0");
-    sidePanel.classList.add("translate-x-full");
+  // Input field sanitization for contact number in sign-up form
+  document
+    .getElementById("contact-number")
+    .addEventListener("input", function (event) {
+      const value = event.target.value;
+      // Remove any non-numeric characters
+      event.target.value = value.replace(/[^0-9]/g, "");
+    });
+
+  // Video modal functionality
+  function openVideo(videoId) {
+    document.getElementById("videoFrame").src =
+      "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
+    document.getElementById("videoModal").classList.remove("hidden");
   }
+
+  function closeVideo() {
+    document.getElementById("videoFrame").src = "";
+    document.getElementById("videoModal").classList.add("hidden");
+  }
+
+  window.openVideo = openVideo;
+  window.closeVideo = closeVideo;
 });
-
-document.getElementById("closeButton").addEventListener("click", function () {
-  var sidePanel = document.getElementById("side-panel");
-  sidePanel.classList.remove("translate-x-0");
-  sidePanel.classList.add("translate-x-full");
-});
-
-//Dun sa input field sa sign up
-document
-  .getElementById("contact-number")
-  .addEventListener("input", function (event) {
-    const value = event.target.value;
-    // Remove any non-numeric characters
-    event.target.value = value.replace(/[^0-9]/g, "");
-  });
-function openVideo(videoId) {
-  document.getElementById("videoFrame").src =
-    "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
-  document.getElementById("videoModal").classList.remove("hidden");
-}
-
-function closeVideo() {
-  document.getElementById("videoFrame").src = "";
-  document.getElementById("videoModal").classList.add("hidden");
-}

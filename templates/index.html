@@ -8,7 +8,7 @@
     <link href="{% static 'css/custom.css' %}" rel="stylesheet" />
     <link href="{% static 'css/typography.css' %}" rel="stylesheet" />
     <script defer src="{% static 'js/animations.js'%}"></script>
-    <script defer src="{% static 'js/script.js'%} "></script>
+    <script defer src="{% static 'js/script.js' %}"></script>
     <title>Home</title>
   </head>
   <body>
@@ -36,7 +36,7 @@
       </div>
       <ul class="my-16 poppins text-white">
         <a href="/"><li class="py-3 mx-5 text-lg font-semibold">Home</li></a>
-        <a href="#services-id"
+        <a href="#services"
           ><li class="py-3 mx-5 text-lg font-semibold">Services</li></a
         >
         <a href="#about-us-id"
@@ -897,7 +897,7 @@
               </div>
               <button
                 type="submit"
-                class="bg-medj-berde px-7 py-3 text-white border-black border"
+                class="bg-green-500 px-10 py-3 text-white rounded-sm"
               >
                 Send
               </button>
@@ -978,14 +978,16 @@
         <div class="mt-5 mx-3">
           <h1 class="font-bold text-xl">Helpful Links</h1>
           <ul class="mt-5">
-            <a href="#services-id"
+            <a href="#services"
               ><li class="p-2 font-thin hover:underline cursor-pointer">
                 Services
               </li></a
             >
-            <li class="p-2 font-thin hover:underline cursor-pointer">
-              Terms & Conditions
-            </li>
+            <label
+              class="p-2 font-thin hover:underline cursor-pointer"
+              id="terms-condition"
+              >Terms & Conditions</label
+            >
             <li class="p-2 font-thin hover:underline cursor-pointer">
               Privacy Policy
             </li>
@@ -995,13 +997,13 @@
           <h1 class="font-bold text-xl">Services</h1>
           <ul class="mt-5">
             <li class="p-2 font-thin hover:underline cursor-pointer">
-              <a href="#services-id">Counseling</a>
+              <a href="#services">Counseling</a>
             </li>
             <li class="p-2 font-thin hover:underline cursor-pointer">
-              <a href="#services-id">Telecounseling</a>
+              <a href="#services">Telecounseling</a>
             </li>
             <li class="p-2 font-thin hover:underline cursor-pointer">
-              <a href="#services-id">Group Counseling</a>
+              <a href="#services">Group Counseling</a>
             </li>
           </ul>
         </div>
@@ -1058,9 +1060,12 @@
                 d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
               />
             </svg>
-            <p class="p-2 font-thin hover:underline cursor-pointer">
-              SLSU - Guidance, Counseling, and Testing Center
-            </p>
+            <a
+              href="https://www.facebook.com/guidanceoffice.slsu"
+              class="p-2 font-thin hover:underline cursor-pointer"
+              target="_blank"
+              >SLSU - Guidance, Counseling, and Testing Center</a
+            >
           </div>
           <div class="flex py-3">
             <svg
@@ -1082,14 +1087,90 @@
                 d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
               />
             </svg>
-
-            <p class="p-2 font-thin hover:underline cursor-pointer">
-              Lucban - Tayabas Rd, Lucban, 4328 Quezon
-            </p>
+            <a
+              target="_blank"
+              href="https://www.google.com/maps/place/College+of+Accountancy,+Business,+Hospitality+and+Administration+(CABHA)/@14.112676,121.560133,19z/data=!4m6!3m5!1s0x33bd532129aa81db:0x3831af6a0edc41f0!8m2!3d14.1126763!4d121.5601329!16s%2Fg%2F11h8jm23n0?hl=en&entry=ttu&g_ep=EgoyMDI0MTExOS4yIKXMDSoASAFQAw%3D%3D"
+            >
+              <p class="p-2 font-thin hover:underline cursor-pointer">
+                Lucban - Tayabas Rd, Lucban, 4328 Quezon
+              </p></a
+            >
           </div>
         </div>
       </div>
     </footer>
+
     <!-- Footer End -->
+    <!-- Modal Start For Terms and Conditions-->
+    <div
+      id="termsModal"
+      class="fixed inset-0 hidden items-center justify-center z-50"
+    >
+      <div class="bg-black bg-opacity-80 fixed inset-0"></div>
+      <div
+        class="bg-white rounded-lg px-10 py-5 z-10 mx-auto w-3/5 overflow-y-auto h-4/5 xs:max-lg:w-4/5"
+      >
+        <h2 class="text-2xl font-bold mb-4">Terms and Conditions</h2>
+        <p class="text-black mb-4 text-justify">
+          Welcome to ANDITO Ako, an online platform created to enhance mental
+          health issues for Southern Luzon State University (SLSU) students via
+          video counseling, peer-to-peer communication, and appointment
+          scheduling. Through accessing the “ANDITO Ako” platform (the
+          “Service”), you are agreeing to be bound by these terms and conditions
+          of use (the “Agreement”). If you do not agree with any of the
+          provisions of this agreement, please do not access the service.
+          <br />
+          <br />
+          <strong>I. The Service</strong><br />
+          <br />
+          <strong>Agreement:</strong> This Agreement is between you and the
+          developers of the “ANDITO Ako” platform. It applies to your use of the
+          Service, including access through authorized emails as a guidance
+          counselor, and student.<br />
+          <strong>Scope:</strong> The Service encompasses features such as
+          booking appointments, interacting with Guidance Counselors and SLSU
+          Peer facilitators, and staying informed of upcoming appointments
+          through reminders sent via the SLSU Email. <br /><br />
+          <strong>II. Using the Service</strong><br />
+          <br />
+          <strong>Eligibility:</strong> This platform is only available to
+          enrolled students of Southern Luzon State University.<br />
+          <strong>Account Registration:</strong> You must provide your full
+          name, email address, and other information needed for registration.
+          You agree to maintain the confidentiality of your account.<br />
+          <strong>Restrictions:</strong> Users must not engage in prohibited
+          conduct such as fraudulent use of the Service, and harassment.
+          Misconduct may lead to suspension.<br />
+          <strong>Termination:</strong> The developers may suspend or terminate
+          access to the Service for violation of this Agreement or any other
+          relevant policy. <br /><br />
+          <strong>III. Legal Obligations</strong><br /><br />
+          <strong>Privacy:</strong> ANDITO Ako values your privacy and handles
+          your data according to our Privacy Policy. By using the Service, you
+          consent to the collection and use of your data.<br />
+          <strong>Legal Compliance:</strong> Users must comply with applicable
+          laws and policies.<br />
+          <strong>Disclaimers:</strong> The Service is provided “as is” without
+          warranties of any kind. The developers are not liable for any damages
+          arising from the use of the Service.<br />
+          <strong>Limitation of Liability:</strong> The developers are not
+          responsible for direct, indirect, or incidental damages resulting from
+          the Service. <br /><br />
+          <strong>IV. Updates to the Agreement</strong><br />
+          <strong>Amendments:</strong> We may update this Agreement at any time.
+          Continued use of the Service signifies acceptance of the updated
+          terms.
+        </p>
+        <div class="flex justify-center">
+          <button
+            id="closeModal"
+            class="w-full py-2 bg-green-500 text-white rounded hover:bg-green-600"
+          >
+            I accept the Terms and Conditions
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Modal End For Terms and Conditions -->
   </body>
 </html>
