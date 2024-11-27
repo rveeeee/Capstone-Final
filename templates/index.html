@@ -62,22 +62,22 @@
             <img
               src="{% static 'images/new_logo.jpg' %}"
               alt=""
-              class="h-full cursor-pointer mr-3"
+              class="h-full cursor-pointer mr-3 fade-backward"
           /></a>
           <a href="/" class="my-auto">
             <h1
-              class="text-4xl font-semibold mr-10 my-auto text-green-500 poppins animate-letters"
+              class="text-4xl font-semibold text-green-500 poppins animate-letters"
             >
               <span>A</span><span>N</span><span>D</span><span>I</span
               ><span>T</span><span>O</span><span>&nbsp;</span><span>A</span
               ><span>K</span><span>O</span>
-            </h1></a
-          >
+            </h1>
+          </a>
         </div>
       </div>
       <div class="my-auto">
         <ul
-          class="mylinks xs:max-lg:hidden poppins uppercase flex animate-fade-in text-nowrap"
+          class="mylinks xs:max-lg:hidden poppins uppercase flex animate-fade-in text-nowrap my-auto"
         >
           <a
             href="#home"
@@ -194,7 +194,7 @@
           class="offer-container flex gap-4 ml-10 mr-10 text-center xs:max-lg:flex-col"
         >
           <div
-            class="bg-white w-1/3 one-by-one border-4 py-10 border-green-500 rounded-2xl xs:max-lg:w-full my-auto"
+            class="bg-white w-1/3 border-4 py-10 border-green-500 rounded-2xl xs:max-lg:w-full my-auto slide-in"
           >
             <img
               src="{% static 'images/counseling.svg' %}"
@@ -209,7 +209,7 @@
             </p>
           </div>
           <div
-            class="bg-white w-1/3 one-by-one border-4 py-10 border-green-500 rounded-2xl xs:max-lg:w-full my-auto"
+            class="bg-white w-1/3 border-4 py-10 border-green-500 rounded-2xl xs:max-lg:w-full my-auto fade-backward"
           >
             <img
               src="{% static 'images/telecounsel.svg' %}"
@@ -225,7 +225,7 @@
             </p>
           </div>
           <div
-            class="bg-white w-1/3 one-by-one border-4 py-10 border-green-500 rounded-2xl xs:max-lg:w-full my-auto"
+            class="bg-white w-1/3 border-4 py-10 border-green-500 rounded-2xl xs:max-lg:w-full my-auto slide-in-right"
           >
             <img
               src="{% static 'images/group-counsel.svg' %}"
@@ -457,11 +457,10 @@
                 experienced team of counselors.
               </p>
               <button
-                class="bg-green-500 text-white px-5 py-2 hover:bg-green-600"
+                class="bg-green-500 text-white px-10 py-2 hover:bg-green-600"
               >
-                <a href="#services">Learn More</a>
+                <a href="{% url 'users:signUp' %}">Sign Up</a>
               </button>
-              <a href="sign-up" class="px-5 py-2 hover:underline">Sign Up ></a>
             </div>
           </div>
           <div class="communication-image xs:max-md:hidden slide-in-right">
@@ -630,9 +629,9 @@
       <!-- FAQs Section Start -->
       <section id="faq">
         <div class="faqs-container p-10 m-10 rounded-md">
-          <div class="faqs-content">
+          <div class="faqs-content fade-backward">
             <div class="faqs-header text-black text-center">
-              <div class="faqs-header text-black text-center fade-backward">
+              <div class="faqs-header text-black text-center">
                 <div class="flex justify-center">
                   <h1 class="p-2 text-4xl poppins">Frequently Ask Questions</h1>
                   <svg
@@ -657,7 +656,7 @@
             </div>
             <div class="flex gap-3 xs:max-sm:flex-col">
               <div
-                class="one-by-one rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
+                class="rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
               >
                 <h2 class="font-bold text-xl mx-3">
                   What mental health services are available to students at the
@@ -669,7 +668,7 @@
                 </p>
               </div>
               <div
-                class="one-by-one rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
+                class="rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
               >
                 <h2 class="font-bold text-xl mx-3">
                   How can I make an appointment with a counselor?
@@ -683,7 +682,7 @@
             </div>
             <div class="flex gap-3 xs:max-sm:flex-col">
               <div
-                class="one-by-one rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
+                class="rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
               >
                 <h2 class="font-bold text-xl mx-3">
                   Are the counseling sessions confidential?
@@ -696,7 +695,7 @@
                 </p>
               </div>
               <div
-                class="one-by-one rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
+                class="rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
               >
                 <h2 class="font-bold text-xl mx-3">
                   Is there a cost associated with using mental health services?
@@ -718,7 +717,7 @@
     <section id="contacts">
       <div class="contact-us-container mx-10 px-10">
         <div
-          class="p-3 text-center flex justify-center bg-contacts-header fade-in"
+          class="p-3 text-center flex justify-center bg-contacts-header animate-fade-in"
         >
           <svg
             class="h-8 w-8 text-white my-auto mx-3"
@@ -829,7 +828,7 @@
       </div>
       <div class="form-full-container mx-10 px-10">
         <div
-          class="form-header bg-contacts-header text-white px-5 py-2 fade-in"
+          class="form-header bg-contacts-header text-white px-5 py-2 animate-fade-in"
         >
           <p class="italic font-extralight">
             "Empowering Minds, Supporting Lives"
@@ -922,24 +921,24 @@
           <div class="counseling-image bg-cover w-1/2 my-auto fade-backward">
             <img src="{% static 'images/self-love.jpg' %} " alt="" />
           </div>
-          <div class="counseling-info w-1/2 p-5 my-auto fade-in">
+          <div class="counseling-info w-1/2 p-5 my-auto">
             <h1
-              class="font-bold text-6xl xs:max-md:hidden text-pink-400 poppins"
+              class="font-bold text-6xl xs:max-md:hidden text-pink-400 poppins slide-in-right"
             >
               Take control of your mental health
             </h1>
-            <p class="my-5">
+            <p class="my-5 slide-in-right">
               Sign up or log in to access our counseling and teletherapy
               services
             </p>
             <div class="flex xs:max-md:flex-col">
               <button
-                class="bg-green-500 hover:bg-green-600 px-10 py-3 mr-3 text-white font-semibold xs:max-md:mb-2 md:max-2xl:mx-2"
+                class="bg-green-500 hover:bg-green-600 px-10 py-3 mr-3 text-white font-semibold xs:max-md:mb-2 md:max-2xl:mx-2 animate-bounce-in"
               >
                 <a href="sign-up">Sign Up</a>
               </button>
               <button
-                class="bg-transparent hover:bg-pink-500 text-pink-500 hover:text-white px-10 py-3 border-pink-500 border-2 font-semibold xs:max-sm:px-12 md:max-2xl:mx-2"
+                class="bg-transparent hover:bg-pink-500 text-pink-500 hover:text-white px-10 py-3 border-pink-500 border-2 font-semibold xs:max-sm:px-12 md:max-2xl:mx-2 animate-bounce-in"
               >
                 <a href="login">Log In</a>
               </button>
@@ -988,9 +987,11 @@
               id="terms-condition"
               >Terms & Conditions</label
             >
+            {% comment %}
             <li class="p-2 font-thin hover:underline cursor-pointer">
               Privacy Policy
             </li>
+            {% endcomment %}
           </ul>
         </div>
         <div class="mt-5 mx-3">

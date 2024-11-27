@@ -22,7 +22,7 @@ module.exports = {
       backgroundImage: {
         "nav-gradient":
           "linear-gradient(90deg, #058912 -3.86%, #FFF 6.68%, #2BA23E 33.52%, #398643 56.12%, #024409 84.3%, #058912 95.87%)",
-        "hero-image": "url('/src/img/SLSU.jpg')",
+
         "second-section-img": "url('/src/img/second-section.png')",
         "about-us-img": "url('/src/img/about-us.png')",
         "services-header":

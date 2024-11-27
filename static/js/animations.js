@@ -1,32 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Temporarily disable the IntersectionObserver to prevent animations
-  // const observerOptions = {
-  //   root: null,
-  //   rootMargin: "0px 0px -50px 0px",
-  //   threshold: 0.1,
-  // };
+  // Animate the "ANDITO AKO" text immediately
+  const navbarText = document.querySelectorAll(".animate-letters span");
+  navbarText.forEach((span) => span.classList.add("in-view"));
 
-  // const observerCallback = (entries, observer) => {
-  //   entries.forEach((entry) => {
-  //     if (entry.isIntersecting) {
-  //       entry.target.classList.add("animate-visible"); // Comment out to disable
-  //       observer.unobserve(entry.target);
-  //     }
-  //   });
-  // };
+  // Intersection Observer for other sections
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+  };
 
-  // const observer = new IntersectionObserver(observerCallback, observerOptions);
+  const handleIntersection = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target); // Stop observing
+      }
+    });
+  };
 
-  // const elementsToAnimate = document.querySelectorAll(
-  //   ".animate-fade-in, .slide-in, .animate-bounce-in, .slide-in-right, .fade-backward, .one-by-one"
-  // );
+  const observer = new IntersectionObserver(
+    handleIntersection,
+    observerOptions
+  );
 
-  // elementsToAnimate.forEach((el) => observer.observe(el));
+  // Select elements for scroll-triggered animations
+  const animatedElements = document.querySelectorAll(
+    ".services-section *, .features-section *, .contacts-section *, .slide-in, .slide-in-right, .fade-backward, .animate-fade-in, .animate-bounce-in"
+  );
 
-  // Special case for animated text (letters)
-  const letters = document.querySelectorAll(".animate-letters span");
-  letters.forEach((letter) => {
-    letter.style.animationDelay = "0s"; // Remove any animation delay
-    letter.classList.remove("animate-visible"); // Prevent animation from triggering
-  });
+  animatedElements.forEach((el) => observer.observe(el));
 });
