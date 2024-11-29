@@ -170,3 +170,33 @@ input[type="number"] {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border: 2px solid rgba(255, 255, 255, 0.2);
 }
+.relative {
+  position: relative;
+}
+
+.book-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: transparent;
+}
+
+.today-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.2rem;
+}
+
+.relative:hover .book-label {
+  opacity: 1;
+}
+
+.relative:hover .today-label {
+  display: none;
+}
