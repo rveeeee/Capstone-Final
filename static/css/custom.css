@@ -17,7 +17,9 @@
 .hero-image {
   background: url(/static/images/hero.jpg);
 }
-
+.bg-login {
+  background: url(/static/images/bg-login.png);
+}
 /* Scroll-triggered Animations */
 .in-view.slide-in {
   animation: slideIn 1.5s ease-in-out forwards;
@@ -143,4 +145,28 @@
 }
 .animate-letters span:nth-child(10) {
   animation-delay: 0.9s;
+}
+.no-arrows::-webkit-outer-spin-button,
+.no-arrows::-webkit-inner-spin-button {
+  @apply appearance-none;
+  margin: 0;
+}
+
+.no-arrows {
+  @apply -moz-appearance:textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.calendar-wrapper {
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }

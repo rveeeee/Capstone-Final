@@ -66,7 +66,7 @@
           /></a>
           <a href="/" class="my-auto">
             <h1
-              class="text-4xl font-semibold mr-10 my-auto text-green-500 poppins animate-letters"
+              class="text-4xl font-semibold mr-10 my-auto text-green-500 poppins"
             >
               <span>A</span><span>N</span><span>D</span><span>I</span
               ><span>T</span><span>O</span><span>&nbsp;</span><span>A</span
@@ -76,9 +76,7 @@
         </div>
       </div>
       <div class="my-auto">
-        <ul
-          class="mylinks xs:max-lg:hidden poppins uppercase flex animate-fade-in text-nowrap"
-        >
+        <ul class="mylinks xs:max-lg:hidden poppins uppercase flex text-nowrap">
           <a
             href="/"
             class="my-auto mx-2 py-2 px-7 hover:text-white rounded-full transition duration-150 ease-in hover:bg-green-500"
@@ -139,7 +137,7 @@
     <section class="pt-24">
       <div class="flex">
         <div
-          class="login-wrapper mx-10 my-5 py-10 rounded-md border-black border"
+          class="calendar-wrapper mx-10 my-5 py-10 rounded-md border-black border"
         >
           <div class="appointment-counselor-container flex mx-5 gap-4">
             <div class="text-2xl font-semibold text-green-700">
@@ -150,18 +148,19 @@
             </div>
             <!-- Counselor toggle -->
             <div class="relative grow select-none z-10">
+              <!-- Trigger for the dropdown -->
               <div
                 id="counselor-lists"
                 class="bg-green-700 ml-auto flex cursor-pointer items-center justify-between rounded px-4 py-1 text-white"
               >
                 <div class="my-auto font-semibold text-base">
-                  <h1 id="selected-counselor nunito">Counselor 1</h1>
+                  <h1 id="selected-counselor" class="nunito">Counselor 1</h1>
                 </div>
                 <div class="text-lg">
                   <p>&#8744;</p>
                 </div>
               </div>
-              <!-- Counselor toggle end -->
+              <!-- Dropdown options -->
               <div
                 id="dropdown-options"
                 class="absolute top-full left-0 w-full mt-2 bg-white rounded border-black border hidden nunito"
