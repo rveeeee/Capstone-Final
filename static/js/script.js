@@ -29,7 +29,32 @@ document.addEventListener("DOMContentLoaded", () => {
     sidePanel.classList.add("translate-x-full");
   });
 
-  // Navigation link highlighting
+  // Input field sanitization for contact number in sign-up form
+  document
+    .getElementById("contact-number")
+    .addEventListener("input", function (event) {
+      const value = event.target.value;
+      // Remove any non-numeric characters
+      event.target.value = value.replace(/[^0-9]/g, "");
+    });
+
+  // Video modal functionality
+  function openVideo(videoId) {
+    document.getElementById("videoFrame").src =
+      "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
+    document.getElementById("videoModal").classList.remove("hidden");
+  }
+
+  function closeVideo() {
+    document.getElementById("videoFrame").src = "";
+    document.getElementById("videoModal").classList.add("hidden");
+  }
+
+  window.openVideo = openVideo;
+  window.closeVideo = closeVideo;
+});
+/*
+// Navigation link highlighting
   const navLinks = document.querySelectorAll(".nav-link");
 
   function removeActiveClasses() {
@@ -71,28 +96,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-
-  // Input field sanitization for contact number in sign-up form
-  document
-    .getElementById("contact-number")
-    .addEventListener("input", function (event) {
-      const value = event.target.value;
-      // Remove any non-numeric characters
-      event.target.value = value.replace(/[^0-9]/g, "");
-    });
-
-  // Video modal functionality
-  function openVideo(videoId) {
-    document.getElementById("videoFrame").src =
-      "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
-    document.getElementById("videoModal").classList.remove("hidden");
-  }
-
-  function closeVideo() {
-    document.getElementById("videoFrame").src = "";
-    document.getElementById("videoModal").classList.add("hidden");
-  }
-
-  window.openVideo = openVideo;
-  window.closeVideo = closeVideo;
-});
+*/
