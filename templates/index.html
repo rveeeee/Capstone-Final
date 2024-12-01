@@ -76,49 +76,67 @@
         </div>
       </div>
       <div class="my-auto">
-        <ul
-          class="mylinks xs:max-lg:hidden poppins uppercase flex animate-fade-in text-nowrap my-auto"
-        >
+        <ul class="mylinks xs:max-lg:hidden poppins uppercase flex text-nowrap">
           <a
-            href="#home"
-            id="home-link"
-            class="nav-link my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in bg-green-500 text-white"
+            href="{% url 'index' %}"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in {% if request.path == '/' %}bg-green-500 text-white{% else %}hover:bg-green-500 hover:text-white{% endif %}"
           >
             <li>Home</li>
           </a>
           <a
-            href="#services"
-            id="services-link"
-            class="nav-link my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+            href="{% url 'index' %}#services-id"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in {% if request.path == '/#services-id' %}bg-green-500 text-white{% else %}hover:bg-green-500 hover:text-white{% endif %}"
           >
             <li>Services</li>
           </a>
           <a
-            href="#about"
-            id="about-link"
-            class="nav-link my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+            href="{% url 'index' %}#about-us-id"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in {% if request.path == '/#about-us-id' %}bg-green-500 text-white{% else %}hover:bg-green-500 hover:text-white{% endif %}"
           >
             <li>About Us</li>
           </a>
           <a
-            href="#contacts"
-            id="contacts-link"
-            class="nav-link my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+            href="{% url 'index' %}#contacts-id"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in {% if request.path == '/#contacts-id' %}bg-green-500 text-white{% else %}hover:bg-green-500 hover:text-white{% endif %}"
           >
             <li>Contacts</li>
           </a>
           <a
-            href="appointment"
-            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+            href="{% url 'appointment' %}"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in {% if request.path == '/appointment' %}bg-green-500 text-white{% else %}hover:bg-green-500 hover:text-white{% endif %}"
           >
             <li>Appointments</li>
           </a>
-          <a href="/" class="h-16 ml-10 mr-5 my-auto cursor-pointer">
-            <img
-              src="{% static 'images/SLSU_Logo.png' %}"
-              alt=""
-              class="h-full"
-            />
+          {% if user.is_authenticated %}
+          <li
+            class="my-auto py-2 px-10 rounded-full box-border hover:bg-green-500 hover:text-white text-black relative group whitespace-nowrap transition duration-150 ease-in"
+          >
+            <a href="{% url 'students:student_schedule' %}">Schedule</a>
+            <ul
+              class="absolute left-0 mt-2 hidden group-hover:block w-full bg-white text-black shadow-lg rounded-xl"
+            >
+              <li
+                class="py-2 mt-2 rounded box-border hover:bg-green-500 hover:text-white transition duration-150 ease-in"
+              >
+                <a href="{% url 'students:student_messages' %}" class="mx-3"
+                  >Messages</a
+                >
+              </li>
+              <li
+                class="py-2 mt-2 rounded box-border hover:bg-green-500 hover:text-white transition duration-150 ease-in"
+              >
+                <a href="{% url 'students:student_settings' %}" class="mx-3"
+                  >Settings</a
+                >
+              </li>
+            </ul>
+          </li>
+          {% endif %}
+          <a
+            href="{% url 'index' %}"
+            class="h-16 ml-10 mr-5 my-auto cursor-pointer"
+          >
+            <img src="/static/images/SLSU_Logo.png" alt="" class="h-full" />
           </a>
         </ul>
       </div>
@@ -138,6 +156,7 @@
         </svg>
       </div>
     </nav>
+
     <!-- Navigation Bar End -->
     <!-- Hero Section Start -->
     <section class="pt-16" id="home">
@@ -160,27 +179,37 @@
             vitality and purpose.
           </p>
           <div class="xs:max-sm:flex">
+            {% if user.is_authenticated %}
+            <a href="{% url 'users:logOut' %}">
+              <button
+                class="xs:max-sm:px-10 xs:max-sm:mr-2 px-14 py-2 bg-red-500 border-2 text-white border-red-500 rounded-full hover:bg-red-600 hover:text-white transform duration-200 ease-in-out animate-bounce-in"
+              >
+                Log out
+              </button>
+            </a>
+            {% else %}
             <a href="{% url 'users:logIn' %}">
               <button
                 class="xs:max-sm:px-10 xs:max-sm:mr-2 px-14 py-2 bg-green-500 border-2 text-white border-green-500 rounded-full hover:bg-green-600 hover:text-white transform duration-200 ease-in-out animate-bounce-in"
               >
                 Log in
-              </button></a
-            >
+              </button>
+            </a>
             <a href="{% url 'users:signUp' %}">
               <button
                 class="xs:max-sm:px-10 px-14 py-2 bg-transparent border-2 text-pink-500 border-pink-500 rounded-full hover:bg-pink-600 hover:text-white transform duration-200 ease-in-out animate-bounce-in"
               >
                 Sign Up
-              </button></a
-            >
+              </button>
+            </a>
+            {% endif %}
           </div>
         </div>
       </div>
     </section>
     <!-- Hero Section End -->
     <!-- Second Section Start -->
-    <section id="services">
+    <section id="services-id">
       <div class="!bg-cover !bg-no-repeat !bg-bottom min-h-screen w-auto">
         <div class="paragraph-container py-10">
           <p
@@ -468,11 +497,9 @@
           </div>
         </div>
       </div>
-      <div class="guidance-counselor-container px-10 m-10" id="team">
+      <div class="guidance-counselor-container px-10 m-10" id="about-us-id">
         <div class="guidance-counselor-header mb-10 slide-in">
-          <p class="font-extralight" id="about-us-id">
-            Helping students in need
-          </p>
+          <p class="font-extralight">Helping students in need</p>
           <h1 class="font-bold text-4xl my-3">Guidance Counselors</h1>
           <p class="font-extralight">
             Here are the lists of professional in our university
@@ -714,7 +741,7 @@
     <!-- Feature Section Ends -->
 
     <!-- Map Section Start -->
-    <section id="contacts">
+    <section id="contacts-id">
       <div class="contact-us-container mx-10 px-10">
         <div
           class="p-3 text-center flex justify-center bg-contacts-header animate-fade-in"

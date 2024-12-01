@@ -97,6 +97,31 @@
           >
             <li>Home</li></a
           >
+          <a
+            href="{% url 'index' %}#services-id"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+          >
+            <li>Services</li>
+          </a>
+          <a
+            href="{% url 'index' %}#about-us-id"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white text-nowrap"
+          >
+            <li>About Us</li>
+          </a>
+          <a
+            href="{% url 'index' %}#contacts-id"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+          >
+            <li>Contacts</li>
+          </a>
+
+          <a
+            href="{% url 'students:student_appointment' %}"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
+          >
+            <li>Appointments</li>
+          </a>
           <li
             class="my-auto py-2 px-10 rounded-full box-border bg-green-500 text-white relative group whitespace-nowrap transition duration-150 ease-in"
           >
@@ -120,30 +145,6 @@
               </li>
             </ul>
           </li>
-          <a
-            href="{% url 'index' %}#services-id"
-            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
-          >
-            <li>Services</li>
-          </a>
-          <a
-            href="{% url 'index' %}#about-us-id"
-            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white text-nowrap"
-          >
-            <li>About Us</li>
-          </a>
-          <a
-            href="{% url 'index' %}#contacts-id"
-            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
-          >
-            <li>Contacts</li>
-          </a>
-          <a
-            href="{% url 'students:student_appointment' %}"
-            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in hover:bg-green-500 hover:text-white"
-          >
-            <li>Appointments</li>
-          </a>
           <a
             href="{% url 'index' %}"
             class="h-16 ml-10 mr-5 my-auto cursor-pointer"
