@@ -4,12 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const termsModal = document.getElementById("termsModal");
   const closeModalButton = document.getElementById("closeModal");
 
-  termsButton.addEventListener("click", () => {
+  termsButton?.addEventListener("click", () => {
     termsModal.classList.remove("hidden");
     termsModal.classList.add("flex");
   });
 
-  closeModalButton.addEventListener("click", () => {
+  closeModalButton?.addEventListener("click", () => {
     termsModal.classList.remove("flex");
     termsModal.classList.add("hidden");
   });
@@ -19,24 +19,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const sidePanel = document.getElementById("side-panel");
   const closeButton = document.getElementById("closeButton");
 
-  menuButton.addEventListener("click", () => {
+  menuButton?.addEventListener("click", () => {
     sidePanel.classList.remove("translate-x-full");
     sidePanel.classList.add("translate-x-0");
   });
 
-  closeButton.addEventListener("click", () => {
+  closeButton?.addEventListener("click", () => {
     sidePanel.classList.remove("translate-x-0");
     sidePanel.classList.add("translate-x-full");
   });
 
   // Input field sanitization for contact number in sign-up form
-  document
-    .getElementById("contact-number")
-    .addEventListener("input", function (event) {
-      const value = event.target.value;
-      // Remove any non-numeric characters
-      event.target.value = value.replace(/[^0-9]/g, "");
-    });
+  const contactNumberField = document.getElementById("contact-number");
+  contactNumberField?.addEventListener("input", function (event) {
+    const value = event.target.value;
+    // Remove any non-numeric characters
+    event.target.value = value.replace(/[^0-9]/g, "");
+  });
 
   // Video modal functionality
   function openVideo(videoId) {
@@ -52,38 +51,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.openVideo = openVideo;
   window.closeVideo = closeVideo;
-});
-/*
-// Navigation link highlighting
-  const navLinks = document.querySelectorAll(".nav-link");
 
-  function removeActiveClasses() {
-    navLinks.forEach((link) => {
-      link.classList.remove("bg-green-500", "text-white");
-    });
-  }
-
-  function addActiveClass(link) {
-    link.classList.add("bg-green-500", "text-white");
-  }
-
-  navLinks.forEach((link) => {
-    link.addEventListener("click", function () {
-      removeActiveClasses();
-      addActiveClass(this);
-    });
-  });
-
-  window.addEventListener("scroll", function () {
-    let currentSection = "";
+  // Scroll detection and nav link highlighting
+  function onScroll() {
     const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".navbar-links a");
+
+    let currentSection = "";
 
     sections.forEach((section) => {
       const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
+      const sectionHeight = section.clientHeight;
       if (
-        scrollY >= sectionTop - 60 &&
-        scrollY < sectionTop + sectionHeight - 60
+        pageYOffset >= sectionTop - window.innerHeight / 2 &&
+        pageYOffset < sectionTop + sectionHeight - window.innerHeight / 2
       ) {
         currentSection = section.getAttribute("id");
       }
@@ -91,9 +72,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     navLinks.forEach((link) => {
       link.classList.remove("bg-green-500", "text-white");
+      link.classList.add("hover:bg-green-500", "hover:text-white");
+
       if (link.getAttribute("href").includes(currentSection)) {
         link.classList.add("bg-green-500", "text-white");
+        link.classList.remove("hover:bg-green-500", "hover:text-white");
       }
     });
-  });
-*/
+  }
+
+  window.addEventListener("scroll", onScroll);
+  onScroll(); // Call the function to set the initial state
+});

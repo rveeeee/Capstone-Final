@@ -1196,40 +1196,5 @@
       </div>
     </div>
     <!-- Modal End For Terms and Conditions -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Function to handle scroll
-        function onScroll() {
-          const sections = document.querySelectorAll("section");
-          const navLinks = document.querySelectorAll(".navbar-links a");
-
-          let currentSection = "";
-
-          sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (
-              pageYOffset >= sectionTop - window.innerHeight / 2 &&
-              pageYOffset < sectionTop + sectionHeight - window.innerHeight / 2
-            ) {
-              currentSection = section.getAttribute("id");
-            }
-          });
-
-          navLinks.forEach((link) => {
-            link.classList.remove("bg-green-500", "text-white");
-            link.classList.add("hover:bg-green-500", "hover:text-white");
-
-            if (link.getAttribute("href").includes(currentSection)) {
-              link.classList.add("bg-green-500", "text-white");
-              link.classList.remove("hover:bg-green-500", "hover:text-white");
-            }
-          });
-        }
-
-        window.addEventListener("scroll", onScroll);
-        onScroll(); // Call the function to set the initial state
-      });
-    </script>
   </body>
 </html>
