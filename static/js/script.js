@@ -57,19 +57,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(
       ".navbar-links a:not(.no-hover)"
-    ); // Exclude .no-hover links
+    );
 
     let currentSection = "";
 
     sections.forEach((section) => {
       const sectionTop = section.getBoundingClientRect().top;
-      const sectionBottom = section.getBoundingClientRect().bottom;
+      const sectionHeight = section.clientHeight;
       const viewportHeight = window.innerHeight;
 
-      // Section must be at least 50% in the viewport to be considered active
+      // Ensure section is considered active when it is fully in the viewport
       if (
-        sectionTop < viewportHeight / 2 &&
-        sectionBottom > viewportHeight / 2
+        sectionTop <= viewportHeight / 2 &&
+        sectionTop + sectionHeight > viewportHeight / 2
       ) {
         currentSection = section.getAttribute("id");
       }
