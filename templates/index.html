@@ -668,10 +668,10 @@
       <!-- FAQs Section Start -->
       <div id="faq" class="py-5">
         <div class="faqs-container p-10 m-10 rounded-md">
-          <div class="faqs-content fade-backward">
+          <div class="faqs-content">
             <div class="faqs-header text-black text-center">
               <div class="faqs-header text-black text-center">
-                <div class="flex justify-center">
+                <div class="flex justify-center fade-backward">
                   <h1 class="p-2 text-4xl poppins">Frequently Ask Questions</h1>
                   <svg
                     class="h-10 w-10 text-emerald-500 my-auto"
@@ -687,7 +687,7 @@
                     />
                   </svg>
                 </div>
-                <p class="text-lg">
+                <p class="text-lg fade-backward">
                   Find answers to common questions about the mental health
                   services available to students.
                 </p>
@@ -695,7 +695,7 @@
             </div>
             <div class="flex gap-3 xs:max-sm:flex-col">
               <div
-                class="rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
+                class="rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full slide-in"
               >
                 <h2 class="font-bold text-xl mx-3">
                   What mental health services are available to students at the
@@ -707,7 +707,7 @@
                 </p>
               </div>
               <div
-                class="rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
+                class="rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full slide-in-right"
               >
                 <h2 class="font-bold text-xl mx-3">
                   How can I make an appointment with a counselor?
@@ -721,7 +721,7 @@
             </div>
             <div class="flex gap-3 xs:max-sm:flex-col">
               <div
-                class="rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
+                class="rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full slide-in"
               >
                 <h2 class="font-bold text-xl mx-3">
                   Are the counseling sessions confidential?
@@ -734,7 +734,7 @@
                 </p>
               </div>
               <div
-                class="rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full"
+                class="rounded-lg mt-5 py-5 w-1/2 border-green-500 border-4 xs:max-sm:w-full slide-in-right"
               >
                 <h2 class="font-bold text-xl mx-3">
                   Is there a cost associated with using mental health services?
@@ -953,7 +953,7 @@
         </div>
       </div>
       <div class="cta-services-container p-10">
-        <h1 class="font-bold text-6xl md:hidden">
+        <h1 class="font-bold text-4xl md:hidden text-pink-400">
           Take control of your mental health
         </h1>
         <div class="counseling-container flex my-10">
@@ -972,12 +972,12 @@
             </p>
             <div class="flex xs:max-md:flex-col">
               <button
-                class="bg-green-500 hover:bg-green-600 px-10 py-3 mr-3 text-white font-semibold xs:max-md:mb-2 md:max-2xl:mx-2 animate-bounce-in"
+                class="bg-green-500 hover:bg-green-600 px-10 py-3 mr-3 text-white font-semibold border-green-500 xs:max-md:mb-2 md:max-2xl:mx-2 animate-bounce-in"
               >
                 <a href="sign-up">Sign Up</a>
               </button>
               <button
-                class="bg-transparent hover:bg-pink-500 text-pink-500 hover:text-white px-10 py-3 border-pink-500 border-2 font-semibold xs:max-sm:px-12 md:max-2xl:mx-2 animate-bounce-in"
+                class="bg-transparent hover:bg-pink-500 px-10 py-3 mr-3 text-pink-500 hover:text-white border-pink-500 border-2 font-semibold xs:max-sm:px-10 md:max-2xl:mx-2 animate-bounce-in"
               >
                 <a href="login">Log In</a>
               </button>
@@ -1000,13 +1000,8 @@
         <div class="mt-5 mx-3">
           <h1 class="font-bold text-xl">Information</h1>
           <ul class="mt-5">
-            <a href="#about-us-id"
-              ><li class="p-2 font-thin hover:underline cursor-pointer">
-                About Us
-              </li></a
-            >
             <li class="p-2 font-thin hover:underline cursor-pointer">
-              <a href="#team">Guidance Counselors</a>
+              <a href="#about-us-id">Guidance Counselors</a>
             </li>
             <li class="p-2 font-thin hover:underline cursor-pointer">
               <a href="#faq">FAQs</a>
