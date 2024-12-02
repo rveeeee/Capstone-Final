@@ -48,6 +48,17 @@
         <a href="appointment"
           ><li class="py-3 mx-5 text-lg font-semibold">Appointments</li></a
         >
+        {% if user.is_authenticated %}
+        <a href="{% url 'students:student_schedule' %}">
+          <li class="py-3 mx-5 text-lg font-semibold">Schedule</li>
+        </a>
+        <a href="{% url 'students:student_messages' %}"
+          ><li class="py-3 mx-5 text-lg font-semibold">Messages</li>
+        </a>
+        <a href="{% url 'students:student_settings' %}"
+          ><li class="py-3 mx-5 text-lg font-semibold">Settings</li>
+        </a>
+        {% endif %}
       </ul>
     </div>
     <!-- Side Panel for tablets and mobiles end -->
@@ -58,14 +69,14 @@
     >
       <div class="flex my-auto">
         <div class="h-16 ml-5 flex text-nowrap">
-          <a href="/">
+          <a href="/" class="no-hover">
             <img
               src="{% static 'images/new_logo.jpg' %}"
               alt=""
               class="h-full cursor-pointer mr-3 fade-backward"
             />
           </a>
-          <a href="/" class="my-auto">
+          <a href="/" class="my-auto no-hover">
             <h1
               class="text-4xl font-semibold text-green-500 poppins animate-letters"
             >
@@ -98,12 +109,12 @@
             class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in"
             >Contacts</a
           >
+          {% if user.is_authenticated %}
           <a
-            href="#appointment"
+            href="{% url 'students:student_appointment' %}"
             class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in"
             >Appointments</a
           >
-          {% if user.is_authenticated %}
           <li
             class="my-auto py-2 px-10 rounded-full box-border hover:bg-green-500 hover:text-white text-black relative group whitespace-nowrap transition duration-150 ease-in"
           >
@@ -127,10 +138,15 @@
               </li>
             </ul>
           </li>
-          {% endif %}
+          {% else %}
+          <a
+            href="appointment"
+            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in"
+            >Appointments</a
+          >{% endif %}
           <a
             href="{% url 'index' %}"
-            class="h-16 ml-10 mr-5 my-auto cursor-pointer"
+            class="h-16 ml-10 mr-5 my-auto cursor-pointer no-hover"
           >
             <img src="/static/images/SLSU_Logo.png" alt="" class="h-full" />
           </a>
@@ -205,7 +221,7 @@
     </section>
     <!-- Hero Section End -->
     <!-- Second Section Start -->
-    <section id="services-id">
+    <section id="services-id" class="pt-10">
       <div class="!bg-cover !bg-no-repeat !bg-bottom min-h-screen w-auto">
         <div class="paragraph-container py-10">
           <p
@@ -426,7 +442,7 @@
     <!-- Second Section End -->
     {% endcomment %}
     <!-- Feature Section Start -->
-    <section id="about">
+    <section id="about" class="pt-10">
       <div class="feature-container h-auto w-auto p-10">
         <div class="feature-header text-center mb-16 animate-fade-in">
           <p class="font-medium text-xl">FEATURES</p>
@@ -650,7 +666,7 @@
         </div>
       </div>
       <!-- FAQs Section Start -->
-      <section id="faq">
+      <section id="faq" class="pt-10">
         <div class="faqs-container p-10 m-10 rounded-md">
           <div class="faqs-content fade-backward">
             <div class="faqs-header text-black text-center">
@@ -737,7 +753,7 @@
     <!-- Feature Section Ends -->
 
     <!-- Map Section Start -->
-    <section id="contacts-id">
+    <section id="contacts-id" class="pt-10">
       <div class="contact-us-container mx-10 px-10">
         <div
           class="p-3 text-center flex justify-center bg-contacts-header animate-fade-in"
@@ -1000,7 +1016,7 @@
         <div class="mt-5 mx-3">
           <h1 class="font-bold text-xl">Helpful Links</h1>
           <ul class="mt-5">
-            <a href="#services"
+            <a href="#services-id"
               ><li class="p-2 font-thin hover:underline cursor-pointer">
                 Services
               </li></a

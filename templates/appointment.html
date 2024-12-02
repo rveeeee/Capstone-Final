@@ -58,13 +58,13 @@
     >
       <div class="flex my-auto">
         <div class="h-16 ml-5 flex text-nowrap">
-          <a href="/">
+          <a href="/" class="no-hover">
             <img
               src="{% static 'images/new_logo.jpg' %}"
               alt=""
               class="h-full cursor-pointer mr-3"
           /></a>
-          <a href="/" class="my-auto">
+          <a href="/" class="my-auto no-hover">
             <h1
               class="text-4xl font-semibold mr-10 my-auto text-green-500 poppins"
             >
@@ -102,12 +102,12 @@
             <li>Contacts</li>
           </a>
           <a
-            href="appointment"
-            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in bg-green-500 text-white"
+            href="{% url 'appointment' %}"
+            class="my-auto mx-2 py-2 px-7 rounded-full bg-green-500 text-white"
           >
             <li>Appointments</li>
           </a>
-          <a href="/" class="h-16 ml-10 mr-5 my-auto cursor-pointer">
+          <a href="/" class="h-16 ml-10 mr-5 my-auto cursor-pointer no-hover">
             <img
               src="{% static 'images/SLSU_Logo.png' %}"
               alt=""

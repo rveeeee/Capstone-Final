@@ -55,16 +55,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // Scroll detection and nav link highlighting
   function onScroll() {
     const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".navbar-links a");
+    const navLinks = document.querySelectorAll(
+      ".navbar-links a:not(.no-hover)"
+    ); // Exclude .no-hover links
 
     let currentSection = "";
 
     sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
+      const sectionTop = section.getBoundingClientRect().top;
+      const sectionBottom = section.getBoundingClientRect().bottom;
+      const viewportHeight = window.innerHeight;
+
+      // Section must be at least 50% in the viewport to be considered active
       if (
-        pageYOffset >= sectionTop - window.innerHeight / 2 &&
-        pageYOffset < sectionTop + sectionHeight - window.innerHeight / 2
+        sectionTop < viewportHeight / 2 &&
+        sectionBottom > viewportHeight / 2
       ) {
         currentSection = section.getAttribute("id");
       }

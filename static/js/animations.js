@@ -7,14 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const observerOptions = {
     root: null,
     rootMargin: "0px",
-    threshold: 0.1,
+    threshold: 0.1, // Trigger animation when 10% of the element is in view
   };
 
   const handleIntersection = (entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("in-view");
-        observer.unobserve(entry.target); // Stop observing
+        // Only trigger animation if the element is not already animated
+        if (!entry.target.classList.contains("in-view")) {
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target); // Stop observing after animation
+        }
       }
     });
   };
