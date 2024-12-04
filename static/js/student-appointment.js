@@ -1,4 +1,3 @@
-// Toggle dropdown visibility
 // Toggle dropdown visibility on click
 document
   .getElementById("counselor-list")
@@ -33,6 +32,7 @@ document.addEventListener("click", function (event) {
   }
 });
 
+// Calendar functionality
 let date = new Date();
 const months = [
   "January",
@@ -67,8 +67,7 @@ function displayDays(month, year) {
   const lastDate = new Date(year, month + 1, 0).getDate();
   const prevLastDate = new Date(year, month, 0).getDate();
   const today = new Date();
-  const isCurrentMonth =
-    month === today.getMonth() && year === today.getFullYear();
+  today.setHours(0, 0, 0, 0); // Normalize today's date to midnight
 
   // Display previous month's trailing days
   for (let i = firstDay; i > 0; i--) {
@@ -78,23 +77,26 @@ function displayDays(month, year) {
 
   // Display current month's days
   for (let day = 1; day <= lastDate; day++) {
-    const dayOfWeek = new Date(year, month, day).getDay();
+    const date = new Date(year, month, day);
+    const dayOfWeek = date.getDay();
     const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+    const isPast = date < today;
+    const isToday = date.toDateString() === today.toDateString();
+
     const dayClass = isWeekend ? "text-red-500" : "text-black";
-    const isToday = isCurrentMonth && day === today.getDate();
     const todayClass = isToday ? "bg-green-700 text-white relative" : "";
     const todayLabel = isToday
       ? `<div class="today-label text-xs text-white mt-2">Today's Date</div>`
       : "";
+    const bookLabel =
+      !isWeekend && !isPast
+        ? `<div class="book-label text-sm text-black font-bold rounded-md px-1 py-0.5 opacity-0 hover:opacity-100">Book</div>`
+        : "";
 
     daysElement.innerHTML += `
       <div class="relative py-5 px-7 mx-5 mb-2 hover:bg-green-400 ${dayClass} ${todayClass}" data-day="${day}">
         ${day}
-        ${
-          !isWeekend
-            ? `<div class="book-label text-sm text-black font-bold rounded-md px-1 py-0.5 opacity-0 hover:opacity-100">Book</div>`
-            : ""
-        }
+        ${bookLabel}
         ${todayLabel}
       </div>`;
   }
@@ -109,14 +111,7 @@ function displayDays(month, year) {
   }
 }
 
-// Event listener for day clicks
-// document.getElementById("days").addEventListener("click", function (event) {
-//   const target = event.target;
-//   if (target.dataset.day) {
-//     alert(`You clicked on ${target.dataset.day}`);
-//   }
-// });
-
+// Month navigation
 document.getElementById("prev").addEventListener("click", function () {
   currentMonth--;
   if (currentMonth < 0) {
@@ -136,8 +131,8 @@ document.getElementById("next").addEventListener("click", function () {
 });
 
 updateMonthYear();
-// Show modal on weekday click
-// Show modal on weekday click (ignore weekends)
+
+// Handle calendar day clicks
 document.getElementById("days").addEventListener("click", function (event) {
   const target = event.target.closest("[data-day]");
   if (target) {
@@ -146,15 +141,24 @@ document.getElementById("days").addEventListener("click", function (event) {
 
     // Get month, year, and convert day into a full date object
     const [monthName, year] = monthYear.split(", ");
-    const monthIndex = months.indexOf(monthName); // Convert month name to index
+    const monthIndex = months.indexOf(monthName);
     const selectedDate = new Date(year, monthIndex, day);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // Check if the clicked date is in the past
+    if (selectedDate < today) {
+      const pastDateModal = document.getElementById("pastDateModal");
+      pastDateModal.classList.remove("hidden");
+      return; // Stop execution
+    }
 
     // Check if the clicked date is a weekend
     const dayOfWeek = selectedDate.getDay();
     if (dayOfWeek === 0 || dayOfWeek === 6) {
-      // It's a weekend, so do nothing
-      console.log("Weekends are not allowed.");
-      return;
+      const weekendModal = document.getElementById("weekendModal");
+      weekendModal.classList.remove("hidden");
+      return; // Stop execution
     }
 
     // Format the date as "Month, Date, Year"
@@ -163,17 +167,29 @@ document.getElementById("days").addEventListener("click", function (event) {
     // Set the default date in the modal
     document.getElementById("appointmentDate").value = formattedDate;
 
-    // Show modal
+    // Show the appointment modal
     document.getElementById("appointmentModal").classList.remove("hidden");
   }
 });
 
-// Close modal logic
+// Close modals
+document
+  .getElementById("closePastDateModal")
+  .addEventListener("click", function () {
+    document.getElementById("pastDateModal").classList.add("hidden");
+  });
+
+document
+  .getElementById("closeWeekendModal")
+  .addEventListener("click", function () {
+    document.getElementById("weekendModal").classList.add("hidden");
+  });
+
 document.getElementById("closeModal").addEventListener("click", function () {
   document.getElementById("appointmentModal").classList.add("hidden");
 });
 
-// Optional: Handle form submission
+// Handle form submission
 document
   .getElementById("appointmentForm")
   .addEventListener("submit", function (event) {

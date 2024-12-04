@@ -139,6 +139,14 @@
           <h1 class="text-4xl font-semibold text-center poppins text-black">
             Log in
           </h1>
+          {% if messages %}
+          <div class="text-center my-3">
+            {% for message in messages %}
+            <p class="text-red-500">{{ message }}</p>
+            {% endfor %}
+          </div>
+          {% endif %}
+
           <div class="login-form">
             <form method="POST">
               {% csrf_token %}

@@ -57,40 +57,43 @@ def logIn(request):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            user = authenticate(request, username=username, password=password)
-            
-            if user is not None:
-                login(request, user)
 
-                # Check if the user is an admin counselor
-                if AdminCounselor.objects.filter(user=user).exists():
-                    # Redirect to admin counselor app
-                    return redirect('admin_counselor:admin_counselor')  # Adjust to your actual admin counselor URL
-
-                # Check if the user is a counselor
-                elif Counselor.objects.filter(user=user).exists():
-                    # Redirect to counselors app
-                    return redirect('counselor:counselor_dashboard')  # Adjust to your actual counselors URL
-                
-                # Otherwise, redirect to students app
-                else:
-                    return redirect('students:student_schedule')  # Adjust to the actual student redirect URL
+            # Check if the user exists in the database
+            if not User.objects.filter(username=username).exists():
+                messages.error(request, "You are not signed up yet.")
+                form = LoginForm()  # Clear form fields
             else:
-                messages.error(request, "Invalid username or password.")
+                user = authenticate(request, username=username, password=password)
+
+                if user is not None:
+                    login(request, user)
+
+                    # Check if the user is an admin counselor
+                    if AdminCounselor.objects.filter(user=user).exists():
+                        # Redirect to admin counselor app
+                        return redirect('admin_counselor:admin_counselor')  # Admin Counselor Interface
+
+                    # Check if the user is a counselor
+                    elif Counselor.objects.filter(user=user).exists():
+                        # Redirect to counselors app
+                        return redirect('counselor:counselor_dashboard')  # Counselor Interface
+
+                    # Otherwise, redirect to students app
+                    else:
+                        return redirect('students:student_schedule')  # Students Interface
+                else:
+                    messages.error(request, "Username or password is incorrect.")
+                    form = LoginForm()  # Clear form fields
         else:
             messages.error(request, "Invalid username or password.")
+            form = LoginForm()  # Clear form fields
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
+
 
 # Logout view
 @login_required
 def logOut(request):
     logout(request)
     return redirect('users:logIn')  # Redirect to the login page after logout
-
-
-# @login_required
-# def some_protected_view(request):
-#     # view code here
-# views for login people that need to be authenticated

@@ -8,7 +8,7 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
     <link href="{% static 'css/custom.css' %}" rel="stylesheet" />
     <link href="{% static 'css/typography.css' %}" rel="stylesheet" />
-    <script src="{% static 'js/script.js'%} "></script>
+    <script defer src="{% static 'js/script.js'%} "></script>
     <script defer src="{% static 'js/student-appointment.js'%} "></script>
     <meta
       http-equiv="Cache-Control"
@@ -118,7 +118,7 @@
           </a>
           <a
             href="{% url 'students:student_appointment' %}"
-            class="my-auto mx-2 py-2 px-7 rounded-full transition duration-150 ease-in bg-green-500 text-white"
+            class="my-auto mx-2 py-2 px-7 rounded-full bg-green-500 text-white"
           >
             <li>Appointments</li>
           </a>
@@ -149,7 +149,11 @@
             href="{% url 'index' %}"
             class="h-16 ml-10 mr-5 my-auto cursor-pointer"
           >
-            <img src="/static/images/SLSU_Logo.png" alt="" class="h-full" />
+            <img
+              src="/static/images/SLSU_Logo.png"
+              alt=""
+              class="h-full no-hover"
+            />
           </a>
         </ul>
       </div>
@@ -383,6 +387,66 @@
             </button>
           </div>
         </form>
+      </div>
+    </div>
+    <!-- Modal for invalid booking dates -->
+    <div
+      id="invalidDateModal"
+      class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50 hidden"
+    >
+      <div class="bg-white text-center px-5 py-10 rounded-md">
+        <div class="py-3">
+          <h1 class="text-2xl font-bold">Invalid Booking Date</h1>
+          <h2>You can't book an appointment on this day.</h2>
+        </div>
+        <div class="mt-5">
+          <button
+            id="closeModalBtn"
+            class="bg-green-500 hover:bg-green-600 px-10 py-3 mx-5 rounded-md text-white"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Weekend Warning Modal -->
+    <div
+      id="weekendModal"
+      class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50 hidden"
+    >
+      <div class="bg-white text-center px-5 py-10 rounded-md">
+        <div class="py-3">
+          <h1 class="text-2xl font-bold">Weekend Booking Not Allowed</h1>
+          <h2>You can't book an appointment on weekends.</h2>
+        </div>
+        <div class="mt-5">
+          <button
+            id="closeWeekendModal"
+            class="bg-green-500 hover:bg-green-600 px-10 py-3 mx-5 rounded-md text-white"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Past Date Warning Modal -->
+    <div
+      id="pastDateModal"
+      class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50 hidden"
+    >
+      <div class="bg-white text-center px-5 py-10 rounded-md">
+        <div class="py-3">
+          <h1 class="text-2xl font-bold">Invalid Booking Date</h1>
+          <h2>You can't book an appointment on a past date.</h2>
+        </div>
+        <div class="mt-5">
+          <button
+            id="closePastDateModal"
+            class="bg-green-500 hover:bg-green-600 px-10 py-3 mx-5 rounded-md text-white"
+          >
+            OK
+          </button>
+        </div>
       </div>
     </div>
   </body>
